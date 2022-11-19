@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import calendar.GetCalendar;
+import itemList.GetGoodsList;
 
 @WebServlet("/")
 public class Main extends HttpServlet {
@@ -24,8 +25,12 @@ public class Main extends HttpServlet {
 		
 		String getCal = cal.calendar();
 		
+		GetGoodsList ggl = new GetGoodsList();
+		String test = ggl.getItemList();
+		
 		ServletContext application =  request.getServletContext();
 		application.setAttribute("calendar", getCal);
+		application.setAttribute("test", test);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/main.jsp");
 		dispatcher.forward(request, response);

@@ -22,7 +22,7 @@
 	<body>
 		<section class="main">
 			<section class="loginLabel">
-				Member Login
+				Member Login ${test}
 			</section>
 			<section class="loginWrapper">
 				<form name="loginForm" class="loginForm">
