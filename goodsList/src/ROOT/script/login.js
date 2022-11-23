@@ -2,9 +2,12 @@
 const loginMassage = document.querySelector(".loginMassage");
 
 const loginForm = document.querySelector('.loginForm');
-loginForm.addEventListener('submit',(e)=>{
-	e.preventDefault();
-});
+if(loginForm != null){
+	loginForm.addEventListener('submit',(e)=>{
+		e.preventDefault();
+	});
+}
+
 
 async function login(getForm){
 	const getFData = new FormData(getForm);
@@ -28,7 +31,7 @@ async function login(getForm){
 			}else if(condi == 'NO-MEMBER'){
 				loginMassage.innerHTML = `<span style="color:red;">등록된 아이디가 아닙니다.</span>`;
 			}else{
-				getMember(condi);
+				location.href='/';
 			}
 		});
 	});

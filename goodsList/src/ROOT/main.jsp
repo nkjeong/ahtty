@@ -7,6 +7,8 @@
     }
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,8 +19,14 @@
 		<script>
 			let calendar = ${calendar};
 		</script>
-		<script defer src="/script/script.js"></script>
-		<script defer src="/script/login.js"></script>
+		<c:if test = "${userId != null}">
+			<script defer src="/script/script.js"></script>
+		</c:if>
+		
+		<c:if test = "${userId == null}">
+			<script defer src="/script/login.js"></script>
+		</c:if>
+
 	</head>
 	<body>
 		<section class="main">
