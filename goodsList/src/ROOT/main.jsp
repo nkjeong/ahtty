@@ -6,7 +6,7 @@
         response.setHeader("Cache-Control", "no-cache");
     }
 %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,14 +18,15 @@
 			let calendar = ${calendar};
 		</script>
 		<script defer src="/script/script.js"></script>
+		<script defer src="/script/login.js"></script>
 	</head>
 	<body>
 		<section class="main">
 			<section class="loginLabel">
-				Member Login ${test}
+				Member Login
 			</section>
 			<section class="loginWrapper">
-				<form name="loginForm" class="loginForm">
+				<form name="loginForm" class="loginForm" onsubmit="return login(this);">
 					<section class="loginFormWrapper">
 						<article class="userId">
 							<div class="form-floating mb-3">
@@ -42,6 +43,9 @@
 						<article class="loginBtn">
 							<input class="btn btn-primary" type="submit" value="LOGIN">
 						</article>
+					</section>
+					<section class="loginMassage">
+						<span>로그인 하시기 바랍니다.</span>
 					</section>
 				</form>
 			</section>

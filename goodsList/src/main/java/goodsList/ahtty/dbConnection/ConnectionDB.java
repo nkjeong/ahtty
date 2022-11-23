@@ -1,4 +1,4 @@
-package dbConnection;
+package goodsList.ahtty.dbConnection;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;

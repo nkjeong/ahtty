@@ -1,4 +1,4 @@
-package itemList;
+package goodsList.ahtty.item;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import javax.sql.DataSource;
 
-import dbConnection.ConnectionDB;
+import goodsList.ahtty.dbConnection.ConnectionDB;
 
 public class GetGoodsList {
 	public String getItemList() {

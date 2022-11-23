@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import calendar.GetCalendar;
-import itemList.GetGoodsList;
+import goodsList.ahtty.calendar.GetCalendar;
 
 @WebServlet("/")
 public class Main extends HttpServlet {
@@ -22,15 +21,10 @@ public class Main extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		GetCalendar cal = new GetCalendar();
-		
 		String getCal = cal.calendar();
-		
-		GetGoodsList ggl = new GetGoodsList();
-		String test = ggl.getItemList();
 		
 		ServletContext application =  request.getServletContext();
 		application.setAttribute("calendar", getCal);
-		application.setAttribute("test", test);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/main.jsp");
 		dispatcher.forward(request, response);
