@@ -2,7 +2,7 @@
 const articleContentWrapper = document.querySelector('.articleContentWrapper');
 const htmlCode = document.querySelector('.htmlCode');
 
-function getGoodsList(){
+(function getGoodsList(){
 	fetch('/goods/goodsList').then((response)=>{
 		response.json().then((data)=>{
 			let setHtml = '';
@@ -35,8 +35,7 @@ function getGoodsList(){
 			});
 		});
 	})
-}
-getGoodsList();
+})();
 
 function selectLine(line, wrapper, idx){
 	wrapper.forEach((l, i)=>{

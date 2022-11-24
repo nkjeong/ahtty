@@ -36,7 +36,11 @@
 					<section class="header">
 						<h1>GREENOFFICE</h1>
 					</section>
-					<section class="top"></section>
+					<section class="top">
+						<section class="hello">
+							${companyName}&nbsp;<strong>${userId}</strong>님 안녕하세요~
+						</section>
+					</section>
 					<section class="mainText">
 						<section class="left"></section>
 						<section class="content">

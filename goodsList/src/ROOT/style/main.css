@@ -79,6 +79,10 @@ body, html{
 }
 .top{
 	height:40px;
+	justify-content:flex-start;
+	font-size: 0.8rem;
+	color:#4584f8;
+	padding:0 0 0 10px;
 }
 
 .mainText{
