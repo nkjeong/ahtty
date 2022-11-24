@@ -82,9 +82,10 @@ body, html{
 	justify-content:flex-start;
 	font-size: 0.8rem;
 	color:#4584f8;
-	padding:0 0 0 10px;
 }
-
+.hello{
+	margin:0 10px;
+}
 .mainText{
 	display:flex;
 	width:100%;
