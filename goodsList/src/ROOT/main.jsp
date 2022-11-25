@@ -46,29 +46,45 @@
 						<section class="content">
 							<section class="itemAccountWrapper">
 								<section class="itemAccount">
-									<article>Img</article>		<!--1-->
-									<article>바코드</article>		<!--2-->
-									<article>상품명</article>		<!--3-->
-									<article>카테고리</article>	<!--4-->
-									<article>원산지</article>		<!--5-->
-									<article>제조사</article>		<!--6-->
-									<article>소비자가</article>	<!--7-->
-									<article>공급가</article>		<!--8-->
-									<article>판매가</article>		<!--9-->
-									<article>품절</article>		<!--10-->
-									<article>단종</article>		<!--11-->
+									<article>
+										<div>
+											<input class="form-check-input ckAll" type="checkbox">
+										</div>
+									</article>		<!--1-->
+									<article>Img</article>		<!--2-->
+									<article>바코드</article>		<!--3-->
+									<article>상품명</article>		<!--4-->
+									<article>규격</article>		<!--5-->
+									<article>품번</article>		<!--6-->
+									<article>카테고리</article>	<!--7-->
+									<article>원산지</article>		<!--8-->
+									<article>제조사</article>		<!--9-->
+									<article>소비자가</article>	<!--10-->
+									<article>공급가</article>		<!--11-->
+									<article>판매가</article>		<!--12-->
+									<article>품절</article>		<!--13-->
+									<article>단종</article>		<!--14-->
 								</section>
 							</section>
 							<section class="articleContentWrapper">
 								<!-- 본문내용 -->
 							</section>
+							<section class="footerInfo">
+								<section class="itemCount"></section>
+								<section class="paging"></section>
+							</section>
 						</section>
 						<section class="right">
 							<section class="itemDetailInfo">
+								<section class="itemName"></section>
 								<section class="htmlCode">
-									상품을 선택 하시면 해당상품의 상세이미지<br>
-									html 소스가 출력됩니다.
+									<article>
+										상품을 선택 하시면 해당상품의 상세이미지<br>
+										html 소스가 출력됩니다.
+									</article>
 								</section>
+								<section class="representativeImageRight"></section>
+								<section class="detailImageRight"></section>
 							</section>
 						</section>
 					</section>
