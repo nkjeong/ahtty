@@ -22,6 +22,7 @@
 			<c:when test="${userId != null}">
 				<script defer src="/script/script.js"></script>
 				<script defer src="/script/goodsList.js"></script>
+				<script defer src="/script/calendar.js"></script>
 			</c:when>
 			<c:otherwise>
 				<script defer src="/script/login.js"></script>

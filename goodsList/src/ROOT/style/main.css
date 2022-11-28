@@ -148,6 +148,7 @@ body, html{
 .articleContentWrapper{
 	width:100%;
 	font-size:0.8rem;
+	overflow: scroll;
 }
 .itemAccount{
 	height:100%;
