@@ -69,6 +69,7 @@ public class MemberLogin extends HttpServlet {
 			session.setAttribute("companyAddress_2", gmbi.getCompanyAddress_2());
 			session.setAttribute("registrationDate", gmbi.getRegistrationDate());
 			session.setAttribute("modifyDate", gmbi.getModifyDate());
+			session.setAttribute("authority", gmbi.getAuthority());
 		}
 		
 		ServletContext application =  request.getServletContext();

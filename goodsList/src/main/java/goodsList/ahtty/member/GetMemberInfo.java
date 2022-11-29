@@ -42,6 +42,7 @@ public class GetMemberInfo {
 					gmib.setCompanyAddress_2(rs.getString("companyAddress_2"));
 					gmib.setRegistrationDate(rs.getString("registrationDate"));
 					gmib.setModifyDate(rs.getString("modifyDate"));
+					gmib.setAuthority(rs.getString("authority"));
 					getMember.add(gmib);
 				}else {
 					gmib.setCondi("WRONG-PASSWORD");

@@ -16,6 +16,7 @@ public class GetMemberInfoBean {
 	private String companyAddress_2 = null;
 	private String registrationDate = null;
 	private String modifyDate = null;
+	private String authority = null;
 	public String getIdx() {
 		return idx;
 	}
@@ -105,5 +106,11 @@ public class GetMemberInfoBean {
 	}
 	public void setCondi(String condi) {
 		this.condi = condi;
+	}
+	public String getAuthority() {
+		return authority;
+	}
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
 }
