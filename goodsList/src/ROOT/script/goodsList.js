@@ -84,7 +84,7 @@ window.addEventListener('resize',()=>{
 });
 
 htmlCode.addEventListener('click', ()=>{
-	window.navigator.clipboard.writeText(htmlCode.innerText).then(() => {
+	navigator.clipboard.writeText(htmlCode.innerText).then(() => {
 		alert("복사 완료!");
 	});
 });
