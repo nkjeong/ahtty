@@ -159,6 +159,7 @@ body, html{
 	height:35px;
 	border-bottom:solid 1px #202125;
 	cursor: default;
+	color:#777a81;
 }
 .representativeImage{
 	width:28px;
@@ -172,7 +173,7 @@ body, html{
 	border-right:solid 1px #202125;
 }
 
-.itemName, .htmlCode, .representativeImageRight, .detailImageRight{
+.itemName, .htmlCode, .representativeImageRight, .detailImageRight, .itemOption{
 	width:95%;
 	border:solid 1px #292a2f;
 	border-radius: 10px;
@@ -190,16 +191,20 @@ body, html{
 	width:100%;
 	text-align:center;
 }
-.htmlCode:hover{
+.htmlCode:hover, .itemOption:hover{
 	color:#ffffff;
 }
-.itemName{
+.itemName, .itemOption{
 	background-color: #1f2023;
 	font-size:1.0rem;
 	color:#f4c4a7;
 	text-align:center;
 	font-weight:700;
 	padding:10px 0;
+}
+.itemOption{
+	cursor:default;
+	color:#777a81;
 }
 .representativeImageRight img, .detailImageRight img{
 	width:100%;
