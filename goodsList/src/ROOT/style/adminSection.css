@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.adminSection, .memberSection, .categoryWrapper, .manufacturWrapper{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	width:90%;
+	border:solid 1px #202125;
+	margin:10px 0 0 0;
+	border-radius: 10px;
+	background-color: #0c0c0c;
+	padding:10px 0 10px 10px;
+	color: #777a81;
+	font-size: 0.8rem;
+}
+.leftTitle{
+	width:100%;
+	text-align: center;
+	font-weight:bold;
+	border-bottom:solid 1px #202125;
+	padding:0 0 10px 0;
+}
+.categoryWrapper, .manufacturWrapper{
+	padding:10px 0;
+}
+.leftContent{
+	padding:0 10px 0 25px;
+}
+section.leftContent article{
+	padding:5px 0;
+	border-bottom:dotted 1px #202125;
+	text-indent: 5px;
+}
+section.leftContent article:last-child{
+	border-bottom:0;
+	padding:5px 0 0 0;
+}

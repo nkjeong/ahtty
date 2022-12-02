@@ -7,4 +7,15 @@
     }
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-{"condi" : "${condi}"}
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+[
+<c:forEach var="item" items="${GetCategoryList}" varStatus="status">
+	{
+		"code":"${item.code}",
+		"name":"${item.name}"
+	}
+	<c:if test="${!status.last}">
+		,
+	</c:if>
+</c:forEach>
+]

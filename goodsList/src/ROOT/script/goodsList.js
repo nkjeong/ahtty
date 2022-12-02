@@ -18,6 +18,12 @@ const itemCount = document.querySelector('.itemCount');
 				let itemName = d.item_name_reg;
 				let manu_code = d.manufacturingCompany_code;
 				let option = d.option;
+				let item_number = '';
+				if(d.item_number == 'N'){
+					item_number = '없음';
+				}else{
+					item_number = d.item_number;
+				}
 				setHtml += `
 					<section class="articleContent" data-imgname="${imgName}" data-itemname="${itemName}" data-manufacturingcompanycode="${manu_code}" data-goodscode="${d.code}" data-option="${option}">
 						<article>
@@ -29,7 +35,7 @@ const itemCount = document.querySelector('.itemCount');
 						<article>${d.barcode}</article>		<!--3-->
 						<article>${itemName}</article>		<!--4-->
 						<article>${d.item_standard}</article>		<!--5-->
-						<article>${d.item_number}</article>		<!--6-->
+						<article>${item_number}</article>		<!--6-->
 						<article>${d.category}</article>	<!--7-->
 						<article>${d.item_origin}</article>		<!--8-->
 						<article>${d.nameKor}</article>		<!--9-->

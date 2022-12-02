@@ -8,6 +8,11 @@ if(loginForm != null){
 	});
 }
 
+const userId = document.querySelector('.userId');
+window.addEventListener('load', ()=>{
+	userId.focus();
+});
+
 
 async function login(getForm){
 	const getFData = new FormData(getForm);

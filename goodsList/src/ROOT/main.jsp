@@ -15,6 +15,7 @@
 		<title>상품공유</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 		<link href="/style/main.css"rel="stylesheet">
+		<link href="/style/adminSection.css"rel="stylesheet">
 		<script>
 			const calendar = ${calendar};
 		</script>
@@ -23,6 +24,7 @@
 				<script defer src="/script/script.js"></script>
 				<script defer src="/script/goodsList.js"></script>
 				<script defer src="/script/calendar.js"></script>
+				<script defer src="/script/adminSection.js"></script>
 			</c:when>
 			<c:otherwise>
 				<script defer src="/script/login.js"></script>
@@ -43,7 +45,33 @@
 						</section>
 					</section>
 					<section class="mainText">
-						<section class="left"></section>
+						<section class="left">
+							<c:choose>
+								<c:when test="${authority eq 'A'}">
+									<section class="adminSection">
+										<article class="memberCnt"></article>
+										<article class="goodsCnt"></article>
+									</section>
+								</c:when>
+								<c:otherwise>
+									<section class="memberSection">
+									
+									</section>
+								</c:otherwise>
+							</c:choose>
+							<section class="categoryWrapper">
+								<section class="leftTitle">
+									카테고리
+								</section>
+								<section class="leftContent"></section>
+							</section>
+							<section class="manufacturWrapper">
+								<section class="leftTitle">
+									제조사(브랜드)
+								</section>
+								<section class="leftContent"></section>
+							</section>
+						</section>
 						<section class="content">
 							<section class="itemAccountWrapper">
 								<section class="itemAccount">
@@ -100,13 +128,13 @@
 					<section class="loginWrapper">
 						<form name="loginForm" class="loginForm" onsubmit="return login(this);">
 							<section class="loginFormWrapper">
-								<article class="userId">
+								<article class="userIdWrapper">
 									<div class="form-floating mb-3">
 										<input type="text" class="form-control userId" name="userId" id="userId" placeholder="userId" oninvalid="this.setCustomValidity('아이디를 입력하세요.')" oninput="this.setCustomValidity('')" required>
 										<label for="floatingInput">User ID</label>
 									</div>
 								</article>
-								<article class="userPw">
+								<article class="userPwWrapper">
 									<div class="form-floating mb-3">
 										<input type="password" class="form-control userPw" name="userPw" id="userPw" placeholder="userPw" oninvalid="this.setCustomValidity('비밀번호를 입력하세요.')" oninput="this.setCustomValidity('')" required>
 										<label for="floatingInput">User Password</label>
