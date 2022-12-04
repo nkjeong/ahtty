@@ -32,3 +32,17 @@ const manufactur = document.querySelector('section.manufacturWrapper .leftConten
 		});
 	});
 })();
+
+(function getManufacturingCompany(){
+	fetch('/goods/getManufacturingCompany').then((response)=>{
+		response.json().then((data)=>{
+			let setHtml = '';
+			data.forEach((c)=>{
+				setHtml += `
+					<article data-manufacturcode="${c.code}">${c.nameKor}</article>
+				`;
+			});
+			manufactur.innerHTML = setHtml;
+		});
+	});
+})();

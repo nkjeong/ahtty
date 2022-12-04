@@ -18,8 +18,8 @@ import javax.sql.DataSource;
 
 import goodsList.ahtty.dbConnection.ConnectionDB;
 
-@WebServlet("/goods/getCategory")
-public class GetCategory extends HttpServlet {
+@WebServlet("/goods/getManufacturingCompany")
+public class GetManufacturingCompany extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -28,8 +28,8 @@ public class GetCategory extends HttpServlet {
 		Statement stmt = null;
 		Connection conn = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM `category_1`";
-		Vector <GetCategoryBean> getCategoryList = new Vector<GetCategoryBean>();
+		String sql = "SELECT * FROM `manufacturingcompany`";
+		Vector <GetManufacturingCompanyBean> getManufacturingCompanyList = new Vector<GetManufacturingCompanyBean>();
 		try {
 			ConnectionDB cdb = new ConnectionDB();
 			DataSource getds= cdb.getCon();
@@ -37,10 +37,11 @@ public class GetCategory extends HttpServlet {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while(rs.next()){
-				GetCategoryBean gcb = new GetCategoryBean();
-				gcb.setCode(rs.getString("code"));
-				gcb.setName(rs.getString("name"));
-				getCategoryList.add(gcb);
+				GetManufacturingCompanyBean gmc = new GetManufacturingCompanyBean();
+				gmc.setCode(rs.getString("code"));
+				gmc.setNameEng(rs.getString("nameEng"));
+				gmc.setNameKor(rs.getString("nameKor"));
+				getManufacturingCompanyList.add(gmc);
 			}
 		}catch(SQLException e) {
 		}finally {
@@ -49,9 +50,10 @@ public class GetCategory extends HttpServlet {
 	        if(rs != null) try{ rs.close(); }catch(Exception ex){}
 		}
 		ServletContext application =  request.getServletContext();
-		application.setAttribute("getCategoryList", getCategoryList);
+		application.setAttribute("getManufacturingCompanyList", getManufacturingCompanyList);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/goods/getCategory.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/goods/getManufacturingCompany.jsp");
 		dispatcher.forward(request, response);
 	}
+
 }

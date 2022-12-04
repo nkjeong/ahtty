@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.adminSection, .memberSection, .categoryWrapper, .manufacturWrapper{
+.adminSection, .memberSection, .categoryWrapper, .manufacturWrapper, .setToDate{
 	display:flex;
 	flex-direction:column;
 	justify-content:center;
@@ -34,4 +34,19 @@ section.leftContent article{
 section.leftContent article:last-child{
 	border-bottom:0;
 	padding:5px 0 0 0;
+}
+section .categoryWrapper .leftTitle, section .manufacturWrapper .leftTitle{
+	cursor:pointer;
+}
+
+section .categoryWrapper .leftTitle:hover, section .manufacturWrapper .leftTitle:hover{
+	color:#f4c4a7;
+	text-decoration: underline;
+}
+.setToDate article{
+	text-align:center;
+	font-weight:bold;
+}
+.setToDate{
+	padding:10px 0;
 }

@@ -46,6 +46,8 @@
 					</section>
 					<section class="mainText">
 						<section class="left">
+							<section class="setToDate">
+							</section>
 							<c:choose>
 								<c:when test="${authority eq 'A'}">
 									<section class="adminSection">
