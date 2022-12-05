@@ -25,6 +25,7 @@
 				<script defer src="/script/goodsList.js"></script>
 				<script defer src="/script/calendar.js"></script>
 				<script defer src="/script/adminSection.js"></script>
+				<script defer src="/script/memberSection.js"></script>
 			</c:when>
 			<c:otherwise>
 				<script defer src="/script/login.js"></script>
@@ -41,7 +42,7 @@
 					</section>
 					<section class="top">
 						<section class="hello">
-							${companyName}&nbsp;<strong>${userId}</strong>님 안녕하세요~
+							${companyName}&nbsp;<strong class="session">${userId}</strong>님 안녕하세요~
 						</section>
 					</section>
 					<section class="mainText">
@@ -57,7 +58,9 @@
 								</c:when>
 								<c:otherwise>
 									<section class="memberSection">
-									
+										<article class="goodsCnt"></article>
+										<article class="myGoodsCnt"></article>
+										<article class="myGoodsReg">내 상품등록하기</article>
 									</section>
 								</c:otherwise>
 							</c:choose>

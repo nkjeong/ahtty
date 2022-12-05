@@ -1,4 +1,4 @@
-package goodsList.ahtty.item;
+package goodsList.ahtty.category;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import goodsList.ahtty.dbConnection.ConnectionDB;
+import goodsList.ahtty.item.GetCategoryBean;
 
 @WebServlet("/goods/getCategory")
 public class GetCategory extends HttpServlet {

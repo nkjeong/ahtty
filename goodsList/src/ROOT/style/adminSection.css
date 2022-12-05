@@ -30,6 +30,8 @@ section.leftContent article{
 	padding:5px 0;
 	border-bottom:dotted 1px #202125;
 	text-indent: 5px;
+	cursor:pointer;
+	position: relative;
 }
 section.leftContent article:last-child{
 	border-bottom:0;
@@ -49,4 +51,11 @@ section .categoryWrapper .leftTitle:hover, section .manufacturWrapper .leftTitle
 }
 .setToDate{
 	padding:10px 0;
+}
+section.leftContent article:hover{
+	color:#ffffff;
+	text-decoration: underline;
+}
+.category_2{
+	display:none;
 }
