@@ -9,10 +9,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 [
-<c:forEach var="item" items="${getCategoryList}" varStatus="status">
+<c:forEach var="category" items="${getCategoryList}" varStatus="status">
 	{
-		"code":"${item.code}",
-		"name":"${item.name}"
+		"code":"${category.code}",
+		"name":"${category.name}"
 	}
 	<c:if test="${!status.last}">
 		,

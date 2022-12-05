@@ -58,4 +58,20 @@ section.leftContent article:hover{
 }
 .category_2{
 	display:none;
+	opacity: 0;
+}
+.category_2_ef{
+	opacity : 1;
+	transition : all 0.7s;
+}
+.category_3{
+	display:none;
+	opacity: 0;
+}
+.setCategory_2{
+	position: relative;
+}
+.category_3_ef{
+	opacity : 1;
+	transition : all 0.7s;
 }

@@ -19,18 +19,19 @@ import javax.sql.DataSource;
 import goodsList.ahtty.dbConnection.ConnectionDB;
 import goodsList.ahtty.category.GetCategoryBean;
 
-@WebServlet("/category/getCategory")
-public class GetCategory extends HttpServlet {
+@WebServlet("/goods/getCategory_2")
+public class GetCategory_2 extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String getCategory_1Code = request.getParameter("setCategory_1Code");
 		Statement stmt = null;
 		Connection conn = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM `category_1`";
-		Vector <GetCategoryBean> getCategoryList = new Vector<GetCategoryBean>();
+		String sql = "SELECT * FROM `category_2` WHERE `category_1_code`='"+getCategory_1Code.trim()+"'";
+		Vector <GetCategoryBean> getCategory_2List = new Vector<GetCategoryBean>();
 		try {
 			ConnectionDB cdb = new ConnectionDB();
 			DataSource getds= cdb.getCon();
@@ -38,10 +39,11 @@ public class GetCategory extends HttpServlet {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql);
 			while(rs.next()){
-				GetCategoryBean gcb = new GetCategoryBean();
-				gcb.setCode(rs.getString("code"));
-				gcb.setName(rs.getString("name"));
-				getCategoryList.add(gcb);
+				GetCategoryBean gcb2 = new GetCategoryBean();
+				gcb2.setCode(rs.getString("code"));
+				gcb2.setName(rs.getString("name"));
+				gcb2.setCategory_1_code(rs.getString("category_1_code"));
+				getCategory_2List.add(gcb2);
 			}
 		}catch(SQLException e) {
 		}finally {
@@ -50,9 +52,9 @@ public class GetCategory extends HttpServlet {
 	        if(rs != null) try{ rs.close(); }catch(Exception ex){}
 		}
 		ServletContext application =  request.getServletContext();
-		application.setAttribute("getCategoryList", getCategoryList);
+		application.setAttribute("getCategory_2List", getCategory_2List);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/category/getCategory.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/category/getCategory_2.jsp");
 		dispatcher.forward(request, response);
 	}
 }
