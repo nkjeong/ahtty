@@ -8,8 +8,14 @@ const detailImageRight = document.querySelector('.detailImageRight');
 const right = document.querySelector('.right');
 const itemCount = document.querySelector('.itemCount');
 
-(function getGoodsList(){
-	fetch('/goods/goodsList').then((response)=>{
+function getGoodsList(mode, keyword){
+	let searURL = '';
+	if(mode == 'all' && keyword == 'all'){
+		searURL = `/goods/goodsList`;
+	}else{
+		searURL = `/goods/goodsList?mode=${mode}&keyword=${keyword}`;
+	}
+	fetch(searURL).then((response)=>{
 		response.json().then((data)=>{
 			let setHtml = '';
 			data.forEach((d)=>{
@@ -58,7 +64,9 @@ const itemCount = document.querySelector('.itemCount');
 			});
 		});
 	})
-})();
+}
+
+getGoodsList('all', 'all');
 
 function selectLine(line, wrapper, idx){
 	wrapper.forEach((l, i)=>{

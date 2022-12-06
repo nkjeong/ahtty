@@ -42,7 +42,7 @@ if(memberCnt != null){
 			data.forEach((c)=>{
 				setHtml += `
 					<article data-catecode="${c.code}" class="category_1">
-						${c.name}
+						<span>${c.name}</span>
 						<article class="category_2"></article>
 					</article>
 				`;
@@ -59,7 +59,14 @@ if(memberCnt != null){
 					showCategory_2(e);
 				});
 			});
-
+			
+			const getCategory_1Btn = category.querySelectorAll('article.category_1 span');
+			getCategory_1Btn.forEach((btns)=>{
+				btns.addEventListener('click',(btn)=>{
+					let keyword = btn.target.parentNode.dataset.catecode;
+					getGoodsList('category_1', keyword);
+				});
+			});
 		});
 	});
 })();
@@ -89,7 +96,7 @@ function showCategory_2(cate){
 					setHtml += `
 						<article style="padding-left:10px;" data-catecode2="${cate.code}" data-catecode1="${cate.category_1_code}" class="setCategory_2">
 							${cate.name}
-							<article class="category_3">fghfghfghfgh</article>
+							<article class="category_3"></article>
 						</article>
 					`;
 				});
@@ -117,23 +124,40 @@ function showCategory_3(cate){
 	let catecode_2 = cate.currentTarget.dataset.catecode2;
 	let cate_3 = cate.currentTarget.querySelector('.category_3');
 	if(cate.type == 'mouseenter'){
-		cate_3.style.display = 'flex';
-		cate_3.style.flexDirection = 'column';
-		cate_3.style.position = 'absolute';
-		cate_3.style.width = '200px';
-		cate_3.style.border = 'solid 1px #202125';
-		cate_3.style.borderRadius = '10px';
-		cate_3.style.backgroundColor = '#0c0c0c';
-		cate_3.style.top = '0';
-		cate_3.style.left = '190px';
-		cate_3.style.paddingBottom = '10px';
-		cate_3.style.color = '#777a81';
-		cate_3.style.boxShadow = '10px 10px 10px #000000';
-		cate_3.classList.add('category_3_ef');
+		let setHtml = '';
+		getCategory_3(catecode_1, catecode_2).then((response)=>{
+			response.json().then((category)=>{
+				if(category.length > 0){
+					cate_3.style.display = 'flex';
+					cate_3.style.flexDirection = 'column';
+					cate_3.style.position = 'absolute';
+					cate_3.style.width = '200px';
+					cate_3.style.border = 'solid 1px #202125';
+					cate_3.style.borderRadius = '10px';
+					cate_3.style.backgroundColor = '#0c0c0c';
+					cate_3.style.top = '0';
+					cate_3.style.left = '190px';
+					cate_3.style.paddingBottom = '10px';
+					cate_3.style.cursor = 'default';
+					cate_3.style.textDecoration = 'none';
+					cate_3.style.color = '#777a81';
+					cate_3.style.boxShadow = '10px 10px 10px #000000';
+					category.forEach((cate)=>{
+						setHtml += `<article>${cate.name}</article>`;
+					});
+					cate_3.innerHTML = setHtml;
+					cate_3.classList.add('category_3_ef');
+				}
+			});
+		});
 	}else{
 		cate_3.style.display = 'none';
 		cate_3.classList.remove('category_3_ef');
 	}
+}
+
+async function getCategory_3(code_1, code_2){
+	return await fetch(`/goods/getCategory_3?setCategory_1Code=${code_1}&setCategory_2Code=${code_2}`);
 }
 
 async function getCategory_2(code){

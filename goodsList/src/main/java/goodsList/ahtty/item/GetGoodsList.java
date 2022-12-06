@@ -25,10 +25,19 @@ public class GetGoodsList extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String keyword = request.getParameter("keyword");
+		String mode = request.getParameter("mode");
+		
 		Statement stmt = null;
 		Connection conn = null;
 		ResultSet rs = null;
-		String sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code`";
+		String sql = "";
+		if(mode == null) {
+			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code`";
+		}else {
+			
+		}
 		Vector<GetGoodsListBean> list = new Vector<GetGoodsListBean>();
 		try {
 			ConnectionDB cdb = new ConnectionDB();

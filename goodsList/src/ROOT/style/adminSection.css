@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.adminSection, .memberSection, .categoryWrapper, .manufacturWrapper, .setToDate{
+.adminSection, .memberSection, .categoryWrapper, .manufacturWrapper, .setToDate, .searchWrapper{
 	display:flex;
 	flex-direction:column;
 	justify-content:center;
@@ -12,6 +12,13 @@
 	padding:10px 0 10px 10px;
 	color: #777a81;
 	font-size: 0.8rem;
+}
+.searchWrapper{
+	padding:10px 10px 0 10px;
+}
+.search, .itemSearchForm div span{
+	background-color:#0c0c0c;
+	border:solid 1px #202125;
 }
 .leftTitle{
 	width:100%;
