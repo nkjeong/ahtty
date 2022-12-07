@@ -26,6 +26,8 @@ public class GetGoodsList extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setCharacterEncoding("UTF-8");
+		
 		String keyword = request.getParameter("keyword");
 		String mode = request.getParameter("mode");
 		
@@ -35,8 +37,26 @@ public class GetGoodsList extends HttpServlet {
 		String sql = "";
 		if(mode == null) {
 			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code`";
-		}else {
-			
+		}else if(mode.equals("category_1")){
+			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` WHERE g.category LIKE '"+keyword.trim()+"%'";
+		}else if(mode.equals("category_2")) {
+			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` WHERE g.category = '"+keyword.trim()+"'";
+		}else if(mode.equals("search")) {
+			String [] word = keyword.trim().split(" ");
+            String subQuery = "";
+            sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` WHERE `item_name` LIKE '%"+word[0]+"%'";
+            for(int i = 0 ; i < word.length ; i++){
+				if(i+1 == word.length){
+                    subQuery += " ORDER BY `hit` DESC";
+                    break;
+                }
+                subQuery += " AND `item_name` LIKE '%"+word[i+1]+"%'";
+            }
+            sql += subQuery;
+		}else if(mode.equals("manufactur")) {
+			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` WHERE g.`manufacturingCompany_code` = '"+keyword.trim()+"'";
+		}else if(mode.equals("barcode")) {
+			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` WHERE g.`barcode` = '"+keyword.trim()+"'";
 		}
 		Vector<GetGoodsListBean> list = new Vector<GetGoodsListBean>();
 		try {

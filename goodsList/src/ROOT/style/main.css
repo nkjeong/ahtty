@@ -15,11 +15,11 @@ body, html{
     background-color:#f8f8f8;
 }
 
-.articleContentWrapper, .right {
+.articleContentWrapper, .right, .left {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
-.articleContentWrapper::-webkit-scrollbar, .right::-webkit-scrollbar {
+.articleContentWrapper::-webkit-scrollbar, .right::-webkit-scrollbar, .left::-webkit-scrollbar {
     display: none;
 }
 
@@ -99,6 +99,7 @@ body, html{
 	width:200px;
 	border-right:solid 1px #292a2f;
 	background-color: #000000;
+	overflow: scroll;
 }
 .content{
 	display:flex;
@@ -176,7 +177,7 @@ body, html{
 	border-right:solid 1px #202125;
 }
 
-.itemName, .htmlCode, .representativeImageRight, .detailImageRight, .itemOption{
+.itemName, .htmlCode, .representativeImageRight, .detailImageRight, .itemOption, .itemKeyword{
 	width:95%;
 	border:solid 1px #292a2f;
 	border-radius: 10px;
@@ -268,4 +269,22 @@ body, html{
 	text-align:right;
 	padding:0 10px 0 0;
 	font-style: italic;
+}
+
+@media screen and (max-width:2100px) {
+	.itemAccount article:nth-of-type(13), .articleContent article:nth-of-type(13) {
+		display:none;
+	}
+	.itemAccount article:nth-of-type(14), .articleContent article:nth-of-type(14) {
+		display:none;
+	}
+}
+
+@media screen and (max-width:2000px) {
+	.itemAccount article:nth-of-type(7), .articleContent article:nth-of-type(7) {
+		display:none;
+	}
+	.itemAccount article:nth-of-type(8), .articleContent article:nth-of-type(8) {
+		display:none;
+	}
 }

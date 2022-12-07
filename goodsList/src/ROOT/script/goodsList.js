@@ -3,9 +3,11 @@ const articleContentWrapper = document.querySelector('.articleContentWrapper');
 const htmlCode = document.querySelector('.htmlCode');
 const itemName = document.querySelector('.itemName');
 const itemOption = document.querySelector('.itemOption');
+const itemKeyword = document.querySelector('.itemKeyword');
 const representativeImageRight = document.querySelector('.representativeImageRight');
 const detailImageRight = document.querySelector('.detailImageRight');
 const right = document.querySelector('.right');
+const left = document.querySelector('.left');
 const itemCount = document.querySelector('.itemCount');
 
 function getGoodsList(mode, keyword){
@@ -119,6 +121,7 @@ function documentSize(){
 	let docHeight = document.body.getBoundingClientRect();
 	articleContentWrapper.style.height = `${docHeight.height-70-40-40-50}px`;
 	right.style.height = `${docHeight.height-70-40}px`;
+	left.style.height = `${docHeight.height-70-40}px`;
 };
 documentSize();
 window.addEventListener('resize',()=>{

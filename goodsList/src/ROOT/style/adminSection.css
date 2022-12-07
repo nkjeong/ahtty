@@ -30,6 +30,9 @@
 .categoryWrapper, .manufacturWrapper{
 	padding:10px 0;
 }
+.manufacturWrapper{
+	margin-bottom:10px;
+}
 .leftContent{
 	padding:0 10px 0 25px;
 }

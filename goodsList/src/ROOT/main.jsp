@@ -26,6 +26,7 @@
 				<script defer src="/script/calendar.js"></script>
 				<script defer src="/script/adminSection.js"></script>
 				<script defer src="/script/memberSection.js"></script>
+				<script defer src="/script/search.js"></script>
 			</c:when>
 			<c:otherwise>
 				<script defer src="/script/login.js"></script>
@@ -66,7 +67,7 @@
 							</c:choose>
 							<section class="searchWrapper">
 								<section class="itemSearch">
-									<form class="itemSearchForm">
+									<form class="itemSearchForm" accept-charset="UTF-8">
 										<div class="input-group input-group-sm mb-3">
 										    <span class="input-group-text" id="inputGroup-sizing-sm">
 										    	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search-heart" viewBox="0 0 16 16">
@@ -133,6 +134,7 @@
 									</article>
 								</section>
 								<section class="itemOption"></section>
+								<section class="itemKeyword"></section>
 								<section class="representativeImageRight"></section>
 								<section class="detailImageRight"></section>
 							</section>
