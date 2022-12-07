@@ -34,6 +34,9 @@
 		</c:choose>
 	</head>
 	<body>
+		<section class="category_2 category_init">
+			fgdfgdfgdfg
+		</section>
 		<section class="main">
 			<c:choose>
 				<c:when test="${userId != null}">

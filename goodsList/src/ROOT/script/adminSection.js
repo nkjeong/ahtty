@@ -3,8 +3,9 @@ const memberCnt = document.querySelector('.memberCnt');
 const goodsCnt = document.querySelector('.goodsCnt');
 const category = document.querySelector('section.categoryWrapper .leftContent');
 const manufactur = document.querySelector('section.manufacturWrapper .leftContent');
+const category_2 = document.querySelector('.category_2');
 if(memberCnt != null){
-	(function getMemberCnt(){
+	(function(){
 		fetch('/member/getMemberCount').then((response)=>{
 			response.json().then((data)=>{
 				memberCnt.innerHTML = `회원수 : ${data.mcount}명`;
@@ -13,7 +14,7 @@ if(memberCnt != null){
 	})();
 }
 
-(function getGoodsCnt(){
+(function(){
 	fetch('/goods/getGoodsCount').then((response)=>{
 		response.json().then((data)=>{
 			goodsCnt.innerHTML = `전체상품수 : ${data.gcount}개`;
@@ -21,7 +22,7 @@ if(memberCnt != null){
 	});
 })();
 
-(function getManufacturingCompany(){
+(function(){
 	fetch('/goods/getManufacturingCompany').then((response)=>{
 		response.json().then((data)=>{
 			let setHtml = '';
@@ -42,6 +43,106 @@ if(memberCnt != null){
 	});
 })();
 
+(function(){
+	fetch('/category/getCategory').then((response)=>{
+		response.json().then((data)=>{
+			let setHtml = '';
+			data.forEach((c)=>{
+				setHtml += `
+					<article data-catecode="${c.code}" class="category_1">
+						${c.name}
+					</article>
+				`;
+			});
+			category.innerHTML = setHtml;
+			const category_1Btn = category.querySelectorAll('.category_1');
+			category_1Btn.forEach((btns)=>{
+				btns.addEventListener('click',(btn)=>{
+					btn.stopPropagation();
+					let keyword = btn.currentTarget.dataset.catecode;
+					getGoodsList('category_1', keyword);
+				});
+				btns.addEventListener('mouseenter',(btn)=>{
+					let cateLocation = btn.currentTarget.getBoundingClientRect();
+					let category_2_y = cateLocation.y;
+					category_2.style.top = `${category_2_y}px`;
+					category_2.classList.add('category_2_ef');
+					showCategory_2(btn, category_2_y);
+				});
+				btns.addEventListener('mouseleave',(btn)=>{
+					category_2.style.top = '-300px';
+				});
+			});
+		});
+	});
+})();
+function showCategory_2(cate, y){
+	let cateCode = cate.currentTarget.dataset.catecode;
+	let setHtml = '';
+	getCategory_2(cateCode).then((response)=>{
+		response.json().then((category)=>{
+			category.forEach((cate)=>{
+				setHtml += `
+					<article style="padding-left:10px;" data-catecode2="${cate.code}" data-catecode1="${cate.category_1_code}" class="setCategory_2">
+						<article class="cate2list">${cate.name}</article>
+						<article class="category_3"></article>
+					</article>
+				`;
+			});
+			category_2.innerHTML = setHtml;
+			category_2.addEventListener('mouseenter', (cate)=>{
+				cate.stopPropagation();
+				cate.currentTarget.style.top = `${y}px`;
+			});
+			category_2.addEventListener('mouseleave', (cate)=>{
+				cate.stopPropagation();
+				cate.currentTarget.style.top = '-300px';
+			});
+			const category_2Btns = category_2.querySelectorAll('article.setCategory_2 .cate2list');
+			category_2Btns.forEach((btns)=>{
+				btns.addEventListener('click', (btn)=>{
+					let catecode1 = btn.target.parentNode.dataset.catecode1;
+					let catecode2 = btn.target.parentNode.dataset.catecode2;
+					let keyword = catecode1+catecode2;
+					getGoodsList('category_1', keyword);
+				});
+				btns.addEventListener('mouseenter', (btn)=>{
+					showCategory_3(btn, y);
+				});
+				btns.addEventListener('mouseleave', (btn)=>{
+					showCategory_3(btn);
+				});
+			});
+		});
+	});
+}
+
+function showCategory_3(cate, y){
+	let catecode_1 = cate.currentTarget.parentNode.dataset.catecode1;
+	let catecode_2 = cate.currentTarget.parentNode.dataset.catecode2;
+	let category_3 = cate.currentTarget.parentNode.querySelector('article.category_3');
+	if(cate.type == 'mouseenter'){
+		let setHtml = '';
+		getCategory_3(catecode_1, catecode_2).then((response)=>{
+			response.json().then((category)=>{
+				if(category.length > 0){
+					category.forEach((cate)=>{
+						setHtml += `<article class="setCategory_3" data-category="${catecode_1+catecode_2+cate.code}">${cate.name}</article>`;
+					});
+					category_3.innerHTML = setHtml;
+					category_3.classList.add('category_3_ef');
+					category_3.addEventListener('mouseenter', (cate_3)=>{
+						category_2.style.top = `${y}px`;
+					});
+				}
+			});
+		});
+	}else{
+		category_3.classList.remove('category_3_ef');
+	}
+}
+
+/*
 (function getCategory_1(){
 	fetch('/category/getCategory').then((response)=>{
 		response.json().then((data)=>{
@@ -74,9 +175,11 @@ if(memberCnt != null){
 					getGoodsList('category_1', keyword);
 				});
 			});
+			
 		});
 	});
 })();
+
 
 function showCategory_2(cate){
 	let catecode = cate.currentTarget.dataset.catecode;
@@ -178,7 +281,7 @@ function showCategory_3(cate){
 		cate_3.classList.remove('category_3_ef');
 	}
 }
-
+*/
 async function getCategory_3(code_1, code_2){
 	return await fetch(`/goods/getCategory_3?setCategory_1Code=${code_1}&setCategory_2Code=${code_2}`);
 }

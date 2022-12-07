@@ -1,8 +1,7 @@
 "use strict";
 const main = document.querySelector('.main');
 
-(function mainContent(){
-	let mainHTML = ``;
+(function (){
 	main.style.backgroundColor = '#18191d';
 	main.style.justifyContent = 'flex-start';
 })();
