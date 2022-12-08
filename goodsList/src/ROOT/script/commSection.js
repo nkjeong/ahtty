@@ -1,29 +1,10 @@
 "use strict";
-const memberCnt = document.querySelector('.memberCnt');
-const goodsCnt = document.querySelector('.goodsCnt');
 const category = document.querySelector('section.categoryWrapper .leftContent');
 const manufactur = document.querySelector('section.manufacturWrapper .leftContent');
 const category_2 = document.querySelector('.category_2');
-if(memberCnt != null){
-	(function(){
-		fetch('/member/getMemberCount').then((response)=>{
-			response.json().then((data)=>{
-				memberCnt.innerHTML = `회원수 : ${data.mcount}명`;
-			});
-		});
-	})();
-}
 
 (function(){
-	fetch('/goods/getGoodsCount').then((response)=>{
-		response.json().then((data)=>{
-			goodsCnt.innerHTML = `전체상품수 : ${data.gcount}개`;
-		});
-	});
-})();
-
-(function(){
-	fetch('/goods/getManufacturingCompany').then((response)=>{
+	fetch('/manufactur/getManufacturingCompany').then((response)=>{
 		response.json().then((data)=>{
 			let setHtml = '';
 			data.forEach((c)=>{
@@ -85,7 +66,7 @@ function showCategory_2(cate, y){
 				setHtml += `
 					<article style="padding-left:10px;" data-catecode2="${cate.code}" data-catecode1="${cate.category_1_code}" class="setCategory_2">
 						<article class="cate2list">${cate.name}</article>
-						<article class="category_3"></article>
+						<!--<article class="category_3"></article>-->
 					</article>
 				`;
 			});
@@ -106,17 +87,19 @@ function showCategory_2(cate, y){
 					let keyword = catecode1+catecode2;
 					getGoodsList('category_1', keyword);
 				});
+				/*
 				btns.addEventListener('mouseenter', (btn)=>{
 					showCategory_3(btn, y);
 				});
 				btns.addEventListener('mouseleave', (btn)=>{
 					showCategory_3(btn);
 				});
+				*/
 			});
 		});
 	});
 }
-
+/*
 function showCategory_3(cate, y){
 	let catecode_1 = cate.currentTarget.parentNode.dataset.catecode1;
 	let catecode_2 = cate.currentTarget.parentNode.dataset.catecode2;
@@ -142,7 +125,7 @@ function showCategory_3(cate, y){
 	}
 }
 
-/*
+
 (function getCategory_1(){
 	fetch('/category/getCategory').then((response)=>{
 		response.json().then((data)=>{

@@ -9,6 +9,7 @@ const detailImageRight = document.querySelector('.detailImageRight');
 const right = document.querySelector('.right');
 const left = document.querySelector('.left');
 const itemCount = document.querySelector('.itemCount');
+const itemNotice = document.querySelector('.itemNotice');
 
 function getGoodsList(mode, keyword){
 	let searURL = '';
@@ -20,41 +21,52 @@ function getGoodsList(mode, keyword){
 	fetch(searURL).then((response)=>{
 		response.json().then((data)=>{
 			let setHtml = '';
-			data.forEach((d)=>{
-				let imgPre = d.nameEng.toLowerCase();
-				let imgName = `${imgPre}_${d.code}`;
-				let itemName = d.item_name_reg;
-				let manu_code = d.manufacturingCompany_code;
-				let option = d.option;
-				let item_number = '';
-				if(d.item_number == 'N'){
-					item_number = '없음';
+			if(data.length > 0){
+				data.forEach((d)=>{
+					let imgPre = d.nameEng.toLowerCase();
+					let imgName = `${imgPre}_${d.code}`;
+					let itemName = d.item_name_reg;
+					let manu_code = d.manufacturingCompany_code;
+					let option = d.option;
+					let keyword = d.keyword;
+					let notice = d.notice;
+					let item_number = '';
+					if(d.item_number == 'N'){
+						item_number = '없음';
+					}else{
+						item_number = d.item_number;
+					}
+					setHtml += `
+						<section class="articleContent" data-imgname="${imgName}" data-itemname="${itemName}" data-manufacturingcompanycode="${manu_code}" data-goodscode="${d.code}" data-option="${option}" data-keyword="${keyword}" data-notice="${notice}">
+							<article>
+								<div>
+									<input class="form-check-input" type="checkbox">
+								</div>
+							</article>		<!--1-->
+							<article><img src="http://twin19.synology.me:8080/images/1000/${imgName}.jpg" class="representativeImage"></article>		<!--2-->
+							<article>${d.barcode}</article>		<!--3-->
+							<article>${itemName}</article>		<!--4-->
+							<article>${d.item_standard}</article>		<!--5-->
+							<article>${item_number}</article>		<!--6-->
+							<article>${d.category}</article>	<!--7-->
+							<article>${d.item_origin}</article>		<!--8-->
+							<article>${d.nameKor}</article>		<!--9-->
+							<article>${Number(d.item_retailPrice).toLocaleString('ko-KR')}</article>	<!--10-->
+							<article>${Number(d.item_purchasePrice).toLocaleString('ko-KR')}</article>		<!--11-->
+							<article>${Number(d.item_SalePrice_1).toLocaleString('ko-KR')}</article>		<!--12-->
+							<article>${d.discontinued}</article>		<!--13-->
+							<article>${d.outOfStock}</article>		<!--14-->
+						</section>
+					`;
+				});
+			}else{
+				if(mode == 'search'){
+					setHtml = `<section class="noSearch">"${keyword}" 검색된 데이터가 없습니다.</section>`;
 				}else{
-					item_number = d.item_number;
+					setHtml = `<section class="noSearch">검색된 데이터가 없습니다.</section>`;
 				}
-				setHtml += `
-					<section class="articleContent" data-imgname="${imgName}" data-itemname="${itemName}" data-manufacturingcompanycode="${manu_code}" data-goodscode="${d.code}" data-option="${option}">
-						<article>
-							<div>
-								<input class="form-check-input" type="checkbox">
-							</div>
-						</article>		<!--1-->
-						<article><img src="http://twin19.synology.me:8080/images/1000/${imgName}.jpg" class="representativeImage"></article>		<!--2-->
-						<article>${d.barcode}</article>		<!--3-->
-						<article>${itemName}</article>		<!--4-->
-						<article>${d.item_standard}</article>		<!--5-->
-						<article>${item_number}</article>		<!--6-->
-						<article>${d.category}</article>	<!--7-->
-						<article>${d.item_origin}</article>		<!--8-->
-						<article>${d.nameKor}</article>		<!--9-->
-						<article>${Number(d.item_retailPrice).toLocaleString('ko-KR')}</article>	<!--10-->
-						<article>${Number(d.item_purchasePrice).toLocaleString('ko-KR')}</article>		<!--11-->
-						<article>${Number(d.item_SalePrice_1).toLocaleString('ko-KR')}</article>		<!--12-->
-						<article>${d.discontinued}</article>		<!--13-->
-						<article>${d.outOfStock}</article>		<!--14-->
-					</section>
-				`;
-			});
+			}
+
 			itemCount.innerHTML = `전체 상품개수 : ${data.length}개`;
 			articleContentWrapper.innerHTML = setHtml;
 			const articleContent = articleContentWrapper.querySelectorAll('.articleContent');
@@ -65,7 +77,7 @@ function getGoodsList(mode, keyword){
 				}, true);
 			});
 		});
-	})
+	});
 }
 
 getGoodsList('all', 'all');
@@ -114,7 +126,10 @@ function selectLine(line, wrapper, idx){
 		itemOption.style.fontWeight = '700';
 		itemOption.innerHTML = `Option 없음`;
 	}
-	
+	let keyword = line.dataset.keyword;
+	itemKeyword.innerHTML = `추가검색어 : ${keyword}`;
+	let notice = line.dataset.notice;
+	itemNotice.innerHTML = `추가사항 : ${notice}`;
 }
 
 function documentSize(){

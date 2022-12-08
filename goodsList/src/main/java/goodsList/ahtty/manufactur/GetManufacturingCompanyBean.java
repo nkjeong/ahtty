@@ -1,4 +1,4 @@
-package goodsList.ahtty.item;
+package goodsList.ahtty.manufactur;
 
 public class GetManufacturingCompanyBean {
 	private String code = null;

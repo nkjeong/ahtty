@@ -24,9 +24,13 @@
 				<script defer src="/script/script.js"></script>
 				<script defer src="/script/goodsList.js"></script>
 				<script defer src="/script/calendar.js"></script>
-				<script defer src="/script/adminSection.js"></script>
+				<script defer src="/script/commSection.js"></script>
 				<script defer src="/script/memberSection.js"></script>
 				<script defer src="/script/search.js"></script>
+				<c:if test="${authority eq 'A'}">
+					<link href="/style/admin.css"rel="stylesheet">
+					<script defer src="/script/admin.js"></script>
+				</c:if>
 			</c:when>
 			<c:otherwise>
 				<script defer src="/script/login.js"></script>
@@ -34,9 +38,22 @@
 		</c:choose>
 	</head>
 	<body>
-		<section class="category_2 category_init">
-			fgdfgdfgdfg
-		</section>
+		<c:if test="${userId != null}">
+			<section class="loginMenu">
+				<c:if test="${authority eq 'A'}">
+					<section class="adminMenu">
+						<article class="admin" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+							Admin
+						</article>
+					</section>
+				</c:if>
+				<section class="memberMenu">
+					<article class="memberInfo">회원정보</article>
+					<article class="logoutBtn">LOGOUT</article>
+				</section>
+			</section>
+		</c:if>
+		<section class="category_2 category_init"></section>
 		<section class="main">
 			<c:choose>
 				<c:when test="${userId != null}">
@@ -48,6 +65,10 @@
 						<section class="hello">
 							${companyName}&nbsp;<strong class="session">${userId}</strong>님 안녕하세요~
 						</section>
+						<section class="homeListBtn">처음으로</section>
+						<section class="allDownBtn">전체상품 다운받기(엑셀)</section>
+						<section class="selectedDownBtn">선택상품 다운받기(엑셀)</section>
+						<section class="searchDownBtn">검색상품 다운받기(엑셀)</section>
 					</section>
 					<section class="mainText">
 						<section class="left">
@@ -138,6 +159,7 @@
 								</section>
 								<section class="itemOption"></section>
 								<section class="itemKeyword"></section>
+								<section class="itemNotice"></section>
 								<section class="representativeImageRight"></section>
 								<section class="detailImageRight"></section>
 							</section>
@@ -178,6 +200,42 @@
 				</c:otherwise>
 			</c:choose>
 		</section>
+		<c:if test="${userId != null && authority eq 'A'}">
+			<!-- 오른쪽 메뉴바 -->
+			<div class="offcanvas offcanvas-end administratorCanvas" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" data-bs-scroll="true" data-bs-backdrop="false">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasRightLabel">Administrator</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+			    	<div class="bodyInWrapper">
+			    		<section class="adminItem">
+			    			<section class="adminTitle">상품관리</section>
+			    			<section class="adminMenuList">상품등록</section>
+			    			<section class="adminMenuList">상품수정</section>
+			    			<section class="adminMenuList">상품삭제</section>
+						</section>
+						<section class="adminItem">
+			    			<section class="adminTitle">카테고리관리</section>
+			    			<section class="adminMenuList">카테고리등록</section>
+			    			<section class="adminMenuList">카테고리수정</section>
+			    			<section class="adminMenuList">카테고리삭제</section>
+						</section>
+						<section class="adminItem">
+			    			<section class="adminTitle">제조사관리</section>
+			    			<section class="adminMenuList">제조사등록</section>
+			    			<section class="adminMenuList">제조사수정</section>
+			    			<section class="adminMenuList">제조사삭제</section>
+						</section>
+						<section class="adminItem">
+			    			<section class="adminTitle">회원관리</section>
+			    			<section class="adminMenuList">회원리스트</section>
+						</section>
+			    	</div>
+				</div>
+			</div>
+			<!-- 오른쪽 메뉴바 -->
+		</c:if>
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 	</body>

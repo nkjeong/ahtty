@@ -1,4 +1,4 @@
-package goodsList.ahtty.item;
+package goodsList.ahtty.manufactur;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 
 import goodsList.ahtty.dbConnection.ConnectionDB;
 
-@WebServlet("/goods/getManufacturingCompany")
+@WebServlet("/manufactur/getManufacturingCompany")
 public class GetManufacturingCompany extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -28,7 +28,7 @@ public class GetManufacturingCompany extends HttpServlet {
 		Statement stmt = null;
 		Connection conn = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM `manufacturingcompany`";
+		String sql = "SELECT * FROM `manufacturingcompany` ORDER BY `nameKor`";
 		Vector <GetManufacturingCompanyBean> getManufacturingCompanyList = new Vector<GetManufacturingCompanyBean>();
 		try {
 			ConnectionDB cdb = new ConnectionDB();
@@ -52,7 +52,7 @@ public class GetManufacturingCompany extends HttpServlet {
 		ServletContext application =  request.getServletContext();
 		application.setAttribute("getManufacturingCompanyList", getManufacturingCompanyList);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/goods/getManufacturingCompany.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/manufactur/getManufacturingCompany.jsp");
 		dispatcher.forward(request, response);
 	}
 

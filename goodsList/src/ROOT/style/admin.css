@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.administratorCanvas{
+	background-color:#000000;
+}
+.offcanvas-title{
+	color:#777a81;
+}
+.btn-close{
+	background-color:#777a81;
+}
+.offcanvas-body{
+	display: flex;
+	justify-content: center;
+}
+.bodyInWrapper{
+	width:100%;
+	height:100%;
+	background-color:#0c0c0c;
+	border: solid 1px #202125;
+	border-radius: 10px;
+}
+
+.adminItem{
+	margin:15px auto;
+	width:95%;
+	border: solid 1px #202125;
+	border-radius: 10px;
+	background-color:#000000;
+}
+.adminTitle, .adminMenuList{
+	padding:5px 0 5px 10px;
+	color:#777a81;
+	font-size:0.8rem;
+	font-weight: 700;
+}
+.adminTitle{
+	border-bottom: solid 1px #202125;
+}
+.adminMenuList{
+	padding:5px 0 5px 30px;
+	font-size:0.75rem;
+	font-weight: 400;
+}
+section.adminItem .adminMenuList{
+	border-bottom: dotted 1px #202125;
+}
+section.adminItem .adminMenuList:last-child{
+	border-bottom: 0;
+}

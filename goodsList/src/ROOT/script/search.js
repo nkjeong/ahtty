@@ -10,6 +10,10 @@ search.addEventListener('keyup',(val)=>{
 	}
 });
 
+search.addEventListener('dblclick',(val)=>{
+	val.target.value = '';
+});
+
 const itemSearchForm = document.querySelector('.itemSearchForm');
 itemSearchForm.addEventListener('submit',(e)=>{
 	e.preventDefault();
