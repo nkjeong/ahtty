@@ -44,6 +44,11 @@
 }
 section.adminItem .adminMenuList{
 	border-bottom: dotted 1px #202125;
+	cursor:pointer;
+}
+section.adminItem .adminMenuList:hover{
+	color: #ffffff;
+	text-decoration: underline;
 }
 section.adminItem .adminMenuList:last-child{
 	border-bottom: 0;

@@ -1,0 +1,8 @@
+@charset "UTF-8";
+.myGoodsReg{
+	cursor:pointer;
+}
+.myGoodsReg:hover{
+	color: #ffffff;
+	text-decoration: underline;
+}

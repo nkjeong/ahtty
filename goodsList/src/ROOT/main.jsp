@@ -16,6 +16,7 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 		<link href="/style/main.css"rel="stylesheet">
 		<link href="/style/adminSection.css"rel="stylesheet">
+		<link href="/style/memberSection.css"rel="stylesheet">
 		<script>
 			const calendar = ${calendar};
 		</script>
@@ -85,7 +86,7 @@
 									<section class="memberSection">
 										<article class="goodsCnt"></article>
 										<article class="myGoodsCnt"></article>
-										<article class="myGoodsReg">내 상품등록하기</article>
+										<article class="myGoodsReg goodsRegBtn" data-reguser="${userId}">내 상품등록하기</article>
 									</section>
 								</c:otherwise>
 							</c:choose>
@@ -211,7 +212,7 @@
 			    	<div class="bodyInWrapper">
 			    		<section class="adminItem">
 			    			<section class="adminTitle">상품관리</section>
-			    			<section class="adminMenuList">상품등록</section>
+			    			<section class="adminMenuList goodsRegBtn" data-reguser="A">상품등록</section>
 			    			<section class="adminMenuList">상품수정</section>
 			    			<section class="adminMenuList">상품삭제</section>
 						</section>

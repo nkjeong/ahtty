@@ -1,6 +1,5 @@
 "use strict";
 const memberCnt = document.querySelector('.memberCnt');
-const goodsCnt = document.querySelector('.goodsCnt');
 
 if(memberCnt != null){
 	(function(){
@@ -11,11 +10,3 @@ if(memberCnt != null){
 		});
 	})();
 }
-
-(function(){
-	fetch('/goods/getGoodsCount').then((response)=>{
-		response.json().then((data)=>{
-			goodsCnt.innerHTML = `전체상품수 : ${data.gcount}개`;
-		});
-	});
-})();
