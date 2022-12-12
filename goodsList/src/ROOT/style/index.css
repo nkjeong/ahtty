@@ -1,4 +1,25 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Unbounded&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body, html{
+    margin:0;
+    padding:0;
+}
+
+body{
+	-ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar{
+	display: none;
+}
+
 .main{
 	margin:0 auto;
 	width:1200px;
@@ -30,4 +51,71 @@ ul.topMenu li:hover{
 .mainBanner{
 	height:350px;
 	margin:10px 0;
+}
+.mainListTitle{
+	font-family: 'Unbounded', cursive;
+	font-size:2.5rem;
+	padding:10px 0;
+	text-align: center;
+}
+.listTitle{
+	padding:10px 0 20px 0;
+	text-align: center;
+}
+.textLogo{
+	color:#e42221;
+}
+
+.goodsListAll{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.itemWrapper{
+	display: flex;
+	flex-direction:column;
+	justify-content:flex-start;
+	align-items:center;
+	height:400px;
+	width: 280px;
+	background-color:#ffffff;
+	border:solid 1px #eeeeee;
+	border-radius: 10px;
+	transition :all 0.3s;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+.itemWrapper:hover{
+	border:solid 1px #dcdcdc;
+	box-shadow :10px 10px 10px #eeeeee;
+}
+.itemImg{
+	display:flex;
+	justify-content:center;
+	margin-top:5px;
+	width:260px;
+	height:260px;
+}
+.itemName{
+	width:260px;
+	border-top:solid 1px #eeeeee;
+	text-align: center;
+	font-weight:700;
+	padding:5px 0;
+	margin-top: 5px;
+}
+section.itemWrapper .itemImg img{
+	width:100%;
+	height:100%;
+	border-radius: 10px;
+}
+.retailPrice{
+	font-weight:700;
+	text-decoration: line-through;
+}
+.purchasePrice{
+	font-size: 1.1rem;
+	color:#e42221;
+	font-weight:700;
 }
