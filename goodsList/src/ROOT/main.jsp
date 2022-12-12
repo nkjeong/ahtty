@@ -12,6 +12,8 @@
 <html lang="ko">
 	<head>
 		<meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>상품공유</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 		<link href="/style/main.css"rel="stylesheet">
@@ -66,7 +68,8 @@
 						<section class="hello">
 							${companyName}&nbsp;<strong class="session">${userId}</strong>님 안녕하세요~
 						</section>
-						<section class="homeListBtn">처음으로</section>
+						<section class="homeBtn">Home</section>
+						<section class="homeListBtn">LIST 처음으로</section>
 						<section class="allDownBtn">전체상품 다운받기(엑셀)</section>
 						<section class="selectedDownBtn">선택상품 다운받기(엑셀)</section>
 						<section class="searchDownBtn">검색상품 다운받기(엑셀)</section>

@@ -36,7 +36,7 @@ async function login(getForm){
 			}else if(condi == 'NO-MEMBER'){
 				loginMassage.innerHTML = `<span style="color:red;">등록된 아이디가 아닙니다.</span>`;
 			}else{
-				location.href='/';
+				location.href='/main';
 			}
 		});
 	});

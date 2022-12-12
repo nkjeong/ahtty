@@ -187,12 +187,12 @@ body, html{
 	font-size:1.5rem;
 }
 
-.homeListBtn, .allDownBtn, .selectedDownBtn, .searchDownBtn{
+.homeBtn, .homeListBtn, .allDownBtn, .selectedDownBtn, .searchDownBtn{
 	color:#a2b9e3;
 	cursor: pointer;
 	padding:0 10px;
 }
-.homeListBtn:hover, .allDownBtn:hover, .selectedDownBtn:hover, .searchDownBtn:hover{
+.homeBtn:hover, .homeListBtn:hover, .allDownBtn:hover, .selectedDownBtn:hover, .searchDownBtn:hover{
 	text-decoration: underline;
 	color:#e7efff;
 }

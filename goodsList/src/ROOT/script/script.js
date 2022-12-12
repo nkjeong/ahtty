@@ -2,6 +2,7 @@
 const main = document.querySelector('.main');
 const logoutBtn = document.querySelector('.logoutBtn');
 const homeListBtn = document.querySelector('.homeListBtn');
+const homeBtn = document.querySelector('.homeBtn');
 
 (function (){
 	main.style.backgroundColor = '#18191d';
@@ -9,10 +10,13 @@ const homeListBtn = document.querySelector('.homeListBtn');
 })();
 
 if(logoutBtn != null){
-	logoutBtn.addEventListener('click', (btn)=>{
+	logoutBtn.addEventListener('click', ()=>{
 		location.href = '/member/logout';
 	});
 }
-homeListBtn.addEventListener('click', (btn)=>{
-	getGoodsList('all', 'all');
+homeListBtn.addEventListener('click', ()=>{
+	location.href = '/main';
+});
+homeBtn.addEventListener('click', ()=>{
+	location.href = '/';
 });

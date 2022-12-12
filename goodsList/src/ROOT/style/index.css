@@ -1,0 +1,33 @@
+@charset "UTF-8";
+.main{
+	margin:0 auto;
+	width:1200px;
+}
+.navigator{
+	display:flex;
+	justify-content:center;
+	border-bottom:solid 1px #eeeeee;
+	padding:10px 0;
+}
+.topMenu{
+	display:flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+ul.topMenu li{
+	margin:0 10px;
+	cursor:pointer;
+}
+ul.topMenu li:hover{
+	color:orange;
+	text-decoration: underline;
+}
+.mainBannerWrapper{
+	height:370px;
+	border-bottom:solid 1px #eeeeee;
+}
+.mainBanner{
+	height:350px;
+	margin:10px 0;
+}
