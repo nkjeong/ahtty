@@ -30,7 +30,7 @@ public class GetCategory_2 extends HttpServlet {
 		Statement stmt = null;
 		Connection conn = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM `category_2` WHERE `category_1_code`='"+getCategory_1Code.trim()+"'";
+		String sql = "SELECT * FROM `category_2` WHERE `category_1_code`='"+getCategory_1Code.trim()+"' ORDER BY `code`";
 		Vector <GetCategoryBean> getCategory_2List = new Vector<GetCategoryBean>();
 		try {
 			ConnectionDB cdb = new ConnectionDB();

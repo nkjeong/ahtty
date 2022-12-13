@@ -45,12 +45,12 @@ ul.topMenu li:hover{
 	text-decoration: underline;
 }
 .mainBannerWrapper{
-	height:370px;
+	height:351px;
 	border-bottom:solid 1px #eeeeee;
 }
 .mainBanner{
 	height:350px;
-	margin:10px 0;
+	margin:0;
 }
 .mainListTitle{
 	font-family: 'Unbounded', cursive;

@@ -25,13 +25,14 @@
 					<li class="home" data-btn="home">Home</li>
 					<li class="mylist" data-btn="main">Mylist</li>
 					<li class="brand" data-btn="brand">Brand</li>
+					<li class="category" data-btn="category">Category</li>
 				</ul>
 			</section>
 			<section class="mainBannerWrapper">
-				<section class="mainBanner"></section>
+				<section class="mainBanner"><img src="/images_source/banner_1.jpg"></section>
 			</section>
 			<section class="mainListTitle">New choice! <span class="textLogo">[Wmullyu]</span></section>
-			<section class="listTitle">- Product All List -</section>
+			<section class="listTitle">- Product List -</section>
 			<section class="goodsListAll"></section>
 		</section>
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
