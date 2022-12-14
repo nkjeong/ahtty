@@ -28,6 +28,17 @@
 					<li class="category" data-btn="category">Category</li>
 				</ul>
 			</section>
+			<section class="listTitle">- Brand Product List -</section>
+			<section class="specialGoodsWrapper">
+				<section class="specialGoodsList">
+					<section class="specialItemWrapper">
+						<section class="specialItemImg">
+							<img src="http://twin19.synology.me:8080/images/1000/3m_0004.jpg">
+						</section>
+						<section class="specialItemInfo"></section>
+					</section>
+				</section>
+			</section>
 			<section class="mainBannerWrapper">
 				<section class="mainBanner"><img src="/images_source/banner_1.jpg"></section>
 			</section>

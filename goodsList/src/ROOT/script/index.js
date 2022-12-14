@@ -1,5 +1,7 @@
 const goodsListAll = document.querySelector('.goodsListAll');
 const topMenuBtns = document.querySelectorAll('ul.topMenu li');
+const navigator = document.querySelector('.navigator');
+const specialItemWrapper = document.querySelectorAll('.specialItemWrapper');
 topMenuBtns.forEach((btns)=>{
 	btns.addEventListener('click', (btn)=>{
 		let btnMode = btn.target.dataset.btn;
@@ -41,5 +43,33 @@ async function getProduct(){
 		});
 	});
 }
-
 getProduct();
+
+window.addEventListener('scroll', (e)=>{
+	let scroll_y = this.scrollY;
+	if(scroll_y > 20){
+		navigator.style.position = 'fixed';
+		navigator.style.width = '100%';
+		navigator.style.left = '0';
+		navigator.style.backgroundColor = '#ffffff';
+		navigator.style.boxShadow = '10px 10px 10px #656565';
+		navigator.style.borderBottom = 'solid 1px #000000';
+		navigator.style.zIndex = '30';
+		
+	}else{
+		navigator.style.position = 'static';
+		navigator.style.borderBottom = 'solid 1px #eeeeee';
+		navigator.style.boxShadow = 'none';
+	}
+});
+
+specialItemWrapper.forEach((btns)=>{
+	btns.addEventListener('mouseenter', (btn)=>{
+		const getSImg = btn.target.children[0].children[0];
+		getSImg.style.top = '0';
+	});
+	btns.addEventListener('mouseleave', (btn)=>{
+		const getSImg = btn.target.children[0].children[0];
+		getSImg.style.top = '50px';
+	});
+});
