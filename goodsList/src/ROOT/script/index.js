@@ -1,7 +1,8 @@
 const goodsListAll = document.querySelector('.goodsListAll');
 const topMenuBtns = document.querySelectorAll('ul.topMenu li');
 const navigator = document.querySelector('.navigator');
-const specialItemWrapper = document.querySelectorAll('.specialItemWrapper');
+
+const specialGoodsList = document.querySelector('.specialGoodsList');
 topMenuBtns.forEach((btns)=>{
 	btns.addEventListener('click', (btn)=>{
 		let btnMode = btn.target.dataset.btn;
@@ -63,13 +64,34 @@ window.addEventListener('scroll', (e)=>{
 	}
 });
 
-specialItemWrapper.forEach((btns)=>{
-	btns.addEventListener('mouseenter', (btn)=>{
-		const getSImg = btn.target.children[0].children[0];
-		getSImg.style.top = '0';
+(async function(){
+	await fetch('/manufactur/brandItem').then((response)=>{
+		response.json().then((data)=>{
+			let setHTML = '';
+			data.forEach((d)=>{
+				let imgPre = d.nameEng.toLowerCase();
+				let imgName = `${imgPre}_${d.code}`;
+				setHTML += `
+					<section class="specialItemWrapper">
+						<section class="specialItemImg">
+							<img src="http://twin19.synology.me:8080/images/1000/${imgName}.jpg">
+						</section>
+						<section class="specialItemInfo"></section>
+					</section>
+				`;
+			});
+			specialGoodsList.innerHTML = setHTML;
+			const specialItemWrapper = specialGoodsList.querySelectorAll('.specialItemWrapper');
+			specialItemWrapper.forEach((btns)=>{
+				btns.addEventListener('mouseenter', (btn)=>{
+					const getSImg = btn.target.children[0].children[0];
+					getSImg.style.top = '0';
+				});
+				btns.addEventListener('mouseleave', (btn)=>{
+					const getSImg = btn.target.children[0].children[0];
+					getSImg.style.top = '50px';
+				});
+			});
+		});
 	});
-	btns.addEventListener('mouseleave', (btn)=>{
-		const getSImg = btn.target.children[0].children[0];
-		getSImg.style.top = '50px';
-	});
-});
+})();
