@@ -20,6 +20,14 @@ public class BrandItem extends HttpServlet {
 		BrandCount count = new BrandCount();
 		
 		int getBrandCount = count.getBrandAllCount();
+		double getNumber = Math.random();
+		
+		int [] getCode = new int[6];
+		for(int i = 0 ; i < getCode.length ; i++) {
+			int randomNum = (int)(getNumber*getBrandCount)+1;
+			if(getCode[i] == randomNum)continue;
+			else getCode[i] = randomNum;
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/manufactur/brandItem.jsp");
 		dispatcher.forward(request, response);
