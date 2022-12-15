@@ -29,8 +29,13 @@
 				</ul>
 			</section>
 			<section class="listTitle">- Brand Product List -</section>
-			<section class="specialGoodsWrapper">
-				<section class="specialGoodsList">
+			<section class="brandGoodsWrapper">
+				<section class="brandGoodsList">
+				</section>
+			</section>
+			<section class="listTitle categoryListWrapper">- Category Product List -</section>
+			<section class="categoryGoodsWrapper">
+				<section class="categoryGoodsList">
 				</section>
 			</section>
 			<section class="mainBannerWrapper">

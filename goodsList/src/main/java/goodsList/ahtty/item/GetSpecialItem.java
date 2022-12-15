@@ -10,13 +10,18 @@ import javax.sql.DataSource;
 
 import goodsList.ahtty.dbConnection.ConnectionDB;
 
-public class GetBrandItem {
-	public int getBrandCnt(String manufacturCode) {
+public class GetSpecialItem {
+	public int getSpecialCnt(String specialCode, String mode) {
 		Statement stmt = null;
 		Connection conn = null;
 		ResultSet rs = null;
 		int count = 0;
-		String sql = "SELECT COUNT(`code`) AS cnt FROM `goods` WHERE `manufacturingCompany_code` = '"+manufacturCode+"'";
+		String sql = "";
+		if(mode.equals("brand")){
+			sql = "SELECT COUNT(`code`) AS cnt FROM `goods` WHERE `manufacturingCompany_code` = '"+specialCode+"'";
+		}else {
+			sql = "SELECT COUNT(`code`) AS cnt FROM `goods` WHERE `category` LIKE '"+specialCode+"%'";
+		}
 		try {
 			ConnectionDB cdb = new ConnectionDB();
 			DataSource getds= cdb.getCon();
@@ -33,12 +38,18 @@ public class GetBrandItem {
 		}
 		return count;
 	}
-	public Vector<GetGoodsListBean> getBrandItem(String manufacturCode, String itemCode){
+	public Vector<GetGoodsListBean> getSpecialItem(String specialCode, String itemCode, String mode){
 		Statement stmt = null;
 		Connection conn = null;
 		ResultSet rs = null;
-		Vector<GetGoodsListBean> brandItem = new Vector<GetGoodsListBean>();
-		String sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` WHERE g.`manufacturingCompany_code` = '"+manufacturCode+"' AND g.`code` = '"+itemCode+"'";
+		Vector<GetGoodsListBean> specialItem = new Vector<GetGoodsListBean>();
+		String sql = "";
+		
+		if(mode.equals("brand")) {
+			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` WHERE g.`manufacturingCompany_code` = '"+specialCode+"' AND g.`code` = '"+itemCode+"'";
+		}else {
+			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` WHERE g.`category` LIKE '"+specialCode+"%' LIMIT "+itemCode+", 1";
+		}
 		try {
 			ConnectionDB cdb = new ConnectionDB();
 			DataSource getds= cdb.getCon();
@@ -72,13 +83,13 @@ public class GetBrandItem {
 			gglb.setHit(rs.getInt("hit"));
 			gglb.setNameEng(rs.getString("nameEng"));
 			gglb.setNameKor(rs.getString("nameKor"));
-			brandItem.add(gglb);
+			specialItem.add(gglb);
 		}catch(SQLException e) {
 		}finally {
 			if(stmt != null) try{ stmt.close(); }catch(Exception ex){}
 			if(conn != null) try{ conn.close(); }catch(Exception ex){}
 	        if(rs != null) try{ rs.close(); }catch(Exception ex){}
 		}
-		return brandItem;
+		return specialItem;
 	}
 }

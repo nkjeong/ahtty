@@ -1,4 +1,4 @@
-package goodsList.ahtty.manufactur;
+package goodsList.ahtty.specialItem;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,13 +9,18 @@ import javax.sql.DataSource;
 
 import goodsList.ahtty.dbConnection.ConnectionDB;
 
-public class BrandCount {
-	public int getBrandAllCount() {
+public class SpecialItemCount {
+	public int getSpecialAllCount(String mode) {
 		Statement stmt = null;
 		Connection conn = null;
 		ResultSet rs = null;
 		int count = 0;
-		String sql = "SELECT COUNT(`code`) AS cnt FROM `manufacturingcompany`";
+		String sql = "";
+		if(mode.equals("brand")){
+			sql = "SELECT COUNT(`code`) AS cnt FROM `manufacturingcompany`";
+		}else {
+			sql = "SELECT COUNT(`code`) AS cnt FROM `category_1`";
+		}
 		try {
 			ConnectionDB cdb = new ConnectionDB();
 			DataSource getds= cdb.getCon();

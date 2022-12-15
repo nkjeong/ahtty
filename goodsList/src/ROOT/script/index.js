@@ -1,8 +1,8 @@
 const goodsListAll = document.querySelector('.goodsListAll');
 const topMenuBtns = document.querySelectorAll('ul.topMenu li');
 const navigator = document.querySelector('.navigator');
-
-const specialGoodsList = document.querySelector('.specialGoodsList');
+const brandGoodsList = document.querySelector('.brandGoodsList');
+const categoryGoodsList = document.querySelector('.categoryGoodsList');
 topMenuBtns.forEach((btns)=>{
 	btns.addEventListener('click', (btn)=>{
 		let btnMode = btn.target.dataset.btn;
@@ -64,8 +64,8 @@ window.addEventListener('scroll', (e)=>{
 	}
 });
 
-(async function(){
-	await fetch('/manufactur/brandItem').then((response)=>{
+async function getSpecialItem(mode){
+	await fetch(`/special/specialItem?mode=${mode}`).then((response)=>{
 		response.json().then((data)=>{
 			let setHTML = '';
 			data.forEach((d)=>{
@@ -84,8 +84,15 @@ window.addEventListener('scroll', (e)=>{
 					</section>
 				`;
 			});
-			specialGoodsList.innerHTML = setHTML;
-			const specialItemWrapper = specialGoodsList.querySelectorAll('.specialItemWrapper');
+			
+			let specialItemWrapper = "";
+			if(mode == 'brand'){
+				brandGoodsList.innerHTML = setHTML;
+				specialItemWrapper = brandGoodsList.querySelectorAll('.specialItemWrapper');
+			}else{
+				categoryGoodsList.innerHTML = setHTML;
+				specialItemWrapper = categoryGoodsList.querySelectorAll('.specialItemWrapper');
+			}
 			specialItemWrapper.forEach((btns)=>{
 				btns.addEventListener('mouseenter', (btn)=>{
 					const getSImg = btn.target.children[0].children[0];
@@ -98,4 +105,7 @@ window.addEventListener('scroll', (e)=>{
 			});
 		});
 	});
-})();
+}
+
+getSpecialItem('brand');
+setTimeout(()=>{getSpecialItem('category');}, 200);
