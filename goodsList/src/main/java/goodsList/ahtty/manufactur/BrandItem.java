@@ -21,6 +21,9 @@ public class BrandItem extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String mode = request.getParameter("mode");
+		
 		BrandCount count = new BrandCount();
 		int getBrandCount = count.getBrandAllCount();
 		String getCode = "";

@@ -76,7 +76,11 @@ window.addEventListener('scroll', (e)=>{
 						<section class="specialItemImg">
 							<img src="http://twin19.synology.me:8080/images/1000/${imgName}.jpg">
 						</section>
-						<section class="specialItemInfo"></section>
+						<section class="specialItemName">${d.item_name_reg}</section>
+						<section class="specialItemInfo">
+							<section class="specialItemPrice">${Number(d.item_retailPrice).toLocaleString('ko-KR')}</section>
+							<section class="specialItemPurchasePrice">${Number(d.item_purchasePrice).toLocaleString('ko-KR')}</section>
+						</section>
 					</section>
 				`;
 			});

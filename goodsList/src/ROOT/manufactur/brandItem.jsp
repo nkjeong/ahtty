@@ -12,7 +12,7 @@
 <c:forEach var="brandItem" items="${item}" varStatus="status">
 	{
 	<c:forEach var="getItem" items="${brandItem}">
-		"item_name":"${getItem.item_name}",
+		"item_name_reg":"${getItem.item_name_reg}",
 		"code":"${getItem.code}",
 		"item_retailPrice":"${getItem.item_retailPrice}",
 		"item_purchasePrice":"${getItem.item_purchasePrice}",
