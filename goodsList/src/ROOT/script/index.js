@@ -3,15 +3,26 @@ const topMenuBtns = document.querySelectorAll('ul.topMenu li');
 const navigator = document.querySelector('.navigator');
 const brandGoodsList = document.querySelector('.brandGoodsList');
 const categoryGoodsList = document.querySelector('.categoryGoodsList');
+const subMenu = document.querySelector('.subMenu');
 topMenuBtns.forEach((btns)=>{
-	btns.addEventListener('click', (btn)=>{
-		let btnMode = btn.target.dataset.btn;
-		if(btnMode == 'home'){
-			location.href = '/';
-		}else{
-			location.href = btnMode;
-		}
-	});
+	let btnMode = btns.dataset.btn
+	if(btnMode == 'home' || btnMode == 'main'){
+		btns.addEventListener('click', (btn)=>{
+			if(btnMode == 'home'){
+				location.href = '/';
+			}else{
+				location.href = btnMode;
+			}
+		});
+	}else{
+		btns.addEventListener('mouseenter', (btn)=>{
+			subMenu.style.display = 'flex';
+			subMenu.style.transition = 'all 0.3s';
+		});
+		btns.addEventListener('mouseleave', (btn)=>{
+			subMenu.style.display = 'none';
+		});
+	}
 });
 
 async function getProduct(){
@@ -58,7 +69,7 @@ window.addEventListener('scroll', (e)=>{
 		navigator.style.zIndex = '30';
 		
 	}else{
-		navigator.style.position = 'static';
+		navigator.style.position = 'relative';
 		navigator.style.borderBottom = 'solid 1px #eeeeee';
 		navigator.style.boxShadow = 'none';
 	}
@@ -108,4 +119,4 @@ async function getSpecialItem(mode){
 }
 
 getSpecialItem('brand');
-setTimeout(()=>{getSpecialItem('category');}, 200);
+setTimeout(()=>{getSpecialItem('category');}, 500);

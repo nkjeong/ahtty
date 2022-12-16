@@ -30,6 +30,19 @@ body::-webkit-scrollbar{
 	border-bottom:solid 1px #eeeeee;
 	padding:10px 0;
 	background-color: #ffffff;
+	position: relative;
+}
+.subMenu{
+	display: none;
+	position: absolute;
+	height:100px;
+	width:100%;
+	border:solid 1px #dcdcdc;
+	bottom:-90px;
+	background-color: #ffffff;
+	border-radius:0 0 10px 10px;
+	box-shadow :10px 10px 10px #eeeeee;
+	z-index: 50;
 }
 .topMenu{
 	display:flex;

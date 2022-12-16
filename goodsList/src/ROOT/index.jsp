@@ -27,6 +27,7 @@
 					<li class="brand" data-btn="brand">Brand</li>
 					<li class="category" data-btn="category">Category</li>
 				</ul>
+				<section class="subMenu">rtyrtyrtyrty</section>
 			</section>
 			<section class="listTitle">- Brand Product List -</section>
 			<section class="brandGoodsWrapper">
