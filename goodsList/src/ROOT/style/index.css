@@ -46,7 +46,8 @@ body::-webkit-scrollbar{
 	position: absolute;
 	transition:all 0.5s;
 	top:-500px;
-	transform: translateX(50%);
+	left: 50%;
+	transform: translateX(-50%);
 }
 .subMenuOn{
 	opacity:1;
@@ -54,11 +55,12 @@ body::-webkit-scrollbar{
 	width:1200px;
 	border:solid 1px #dcdcdc;
 	top:34px;
+	left: 50%;
 	background-color: #ffffff;
 	border-radius:0 0 10px 10px;
-	box-shadow :10px 10px 10px #eeeeee;
+	box-shadow :0 8px 24px rgba(140,149,159,0.2);
 	z-index: 50;
-	transform: translateX(50%);
+	transform: translateX(-50%);
 }
 .subMenuWrapper{
 	width:100%;
