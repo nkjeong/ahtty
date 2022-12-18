@@ -16,13 +16,19 @@ topMenuBtns.forEach((btns)=>{
 			}
 		});
 	}else{
+		let menuItems = '';
+		if(btnMode == 'brand'){
+			menuItems = '브랜드';
+		}else{
+			menuItems = '카테고리';
+		}
 		btns.addEventListener('mouseenter', (btn)=>{
 			subMenu.classList.add('subMenuOn');
 			subMenu.addEventListener('mouseenter', ()=>{
 				subMenu.classList.add('subMenuOn');
 			});
 			let setHTML = `
-				<section class="subMenuWrapper"></section>
+				<section class="subMenuWrapper">${menuItems}</section>
 			`;
 			subMenu.innerHTML = setHTML;
 		});
