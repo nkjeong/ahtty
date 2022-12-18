@@ -16,9 +16,12 @@
 		<title>세상물류</title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<link href="/style/index.css" rel="stylesheet">
+		<link href="/style/canvas.css" rel="stylesheet">
 		<script defer src="/script/index.js"></script>
+		<script defer src="/script/canvas.js"></script>
 	</head>
 	<body>
+	<section class="subMenu"></section>
 		<section class="main">
 			<section class="navigator">
 				<ul class="topMenu">
@@ -27,22 +30,24 @@
 					<li class="brand" data-btn="brand">Brand</li>
 					<li class="category" data-btn="category">Category</li>
 				</ul>
-				<section class="subMenu">rtyrtyrtyrty</section>
 			</section>
 			<section class="listTitle">- Brand Product List -</section>
 			<section class="brandGoodsWrapper">
 				<section class="brandGoodsList">
 				</section>
 			</section>
-			<section class="listTitle categoryListWrapper">- Category Product List -</section>
+			<section class="mainBannerWrapper">
+				<section class="tempBanner">
+					<img src="/images_source/banner_1.jpg">
+				</section>
+				<section class="mainBanner"></section>
+			</section>
+			<section class="mainListTitle">New choice! <span class="textLogo">[Wmullyu]</span></section>
+			<section class="listTitle">- Category Product List -</section>
 			<section class="categoryGoodsWrapper">
 				<section class="categoryGoodsList">
 				</section>
 			</section>
-			<section class="mainBannerWrapper">
-				<section class="mainBanner"><img src="/images_source/banner_1.jpg"></section>
-			</section>
-			<section class="mainListTitle">New choice! <span class="textLogo">[Wmullyu]</span></section>
 			<section class="listTitle">- Product List -</section>
 			<section class="goodsListAll"></section>
 		</section>	

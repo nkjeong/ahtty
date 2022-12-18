@@ -1,3 +1,4 @@
+"use strict";
 const goodsListAll = document.querySelector('.goodsListAll');
 const topMenuBtns = document.querySelectorAll('ul.topMenu li');
 const navigator = document.querySelector('.navigator');
@@ -16,14 +17,25 @@ topMenuBtns.forEach((btns)=>{
 		});
 	}else{
 		btns.addEventListener('mouseenter', (btn)=>{
-			subMenu.style.display = 'flex';
-			subMenu.style.transition = 'all 0.3s';
+			subMenu.classList.add('subMenuOn');
+			subMenu.addEventListener('mouseenter', ()=>{
+				subMenu.classList.add('subMenuOn');
+			});
+			let setHTML = `
+				<section class="subMenuWrapper"></section>
+			`;
+			subMenu.innerHTML = setHTML;
 		});
 		btns.addEventListener('mouseleave', (btn)=>{
-			subMenu.style.display = 'none';
+			subMenu.classList.remove('subMenuOn');
+			subMenu.addEventListener('mouseleave', ()=>{
+				subMenu.classList.remove('subMenuOn');
+			});
 		});
 	}
 });
+
+
 
 async function getProduct(){
 	await fetch(`/goods/goodsList`).then((response)=>{
@@ -60,18 +72,11 @@ getProduct();
 window.addEventListener('scroll', (e)=>{
 	let scroll_y = this.scrollY;
 	if(scroll_y > 20){
-		navigator.style.position = 'fixed';
-		navigator.style.width = '100%';
-		navigator.style.left = '0';
-		navigator.style.backgroundColor = '#ffffff';
-		navigator.style.boxShadow = '10px 10px 10px #656565';
-		navigator.style.borderBottom = 'solid 1px #000000';
-		navigator.style.zIndex = '30';
+		navigator.classList.add('navigatorOn');
+		subMenu.style.width = '1200px'
 		
 	}else{
-		navigator.style.position = 'relative';
-		navigator.style.borderBottom = 'solid 1px #eeeeee';
-		navigator.style.boxShadow = 'none';
+		navigator.classList.remove('navigatorOn');
 	}
 });
 

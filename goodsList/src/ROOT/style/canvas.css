@@ -1,0 +1,37 @@
+@charset "UTF-8";
+.mainBannerWrapper{
+	position:relative;
+	height:351px;
+	border-bottom:solid 1px #eeeeee;
+}
+.tempBanner, .mainBanner{
+	width:1200px;
+	display:flex;
+	position:absolute;
+	top:0;
+	left:0;
+	height:350px;
+	margin:0;
+	padding:0;
+}
+.mainBanner{
+	overflow: hidden;
+}
+
+.cloneBox{
+	position:absolute;
+	width:50px;
+	height:350px;
+	margin:0;
+	padding:0;
+	overflow: hidden;
+	z-index: 5;
+	transition-duration:1.0s;
+	transition-timing-function:cubic-bezier(0, 0.55, 0.45, 1);
+}
+.cloneBox img{
+	position:absolute;
+	z-index: 6;
+	opacity: 0;
+	transition:all 1.0s;
+}

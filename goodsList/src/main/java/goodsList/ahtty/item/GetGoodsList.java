@@ -36,7 +36,7 @@ public class GetGoodsList extends HttpServlet {
 		ResultSet rs = null;
 		String sql = "";
 		if(mode == null) {
-			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code`";
+			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` ORDER BY `item_retailPrice` DESC";
 		}else if(mode.equals("category_1")){
 			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` WHERE g.category LIKE '"+keyword.trim()+"%'";
 		}else if(mode.equals("category_2")) {
