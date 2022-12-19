@@ -16,6 +16,7 @@ topMenuBtns.forEach((btns)=>{
 			}
 		});
 	}else{
+		let url = btns.dataset.url;
 		let menuItems = '';
 		if(btnMode == 'brand'){
 			menuItems = '브랜드';
@@ -24,24 +25,48 @@ topMenuBtns.forEach((btns)=>{
 		}
 		btns.addEventListener('mouseenter', (btn)=>{
 			subMenu.classList.add('subMenuOn');
-			subMenu.addEventListener('mouseenter', ()=>{
-				subMenu.classList.add('subMenuOn');
-			});
+
 			let setHTML = `
-				<section class="subMenuWrapper">${menuItems}</section>
+				<section class="subMenuWrapper">
+					<section class="subMeneTitle"><span>${menuItems}</span></section>
+					<section class="subMenuList"></section>
+				</section>
 			`;
 			subMenu.innerHTML = setHTML;
+			getTopMenuList(url).then((response)=>{
+				response.json().then((data)=>{
+					let topMenuHTML = '';
+					
+					data.forEach((d)=>{
+						if(btnMode == 'category'){
+							topMenuHTML += `
+								<section>${d.name}</section>
+							`;
+						}else{
+							topMenuHTML += `
+								<section class="brandWrapper"><span>${d.nameKor}</span></section>
+							`;
+						}
+					});
+					subMenu.querySelector('.subMenuList').innerHTML = topMenuHTML;
+				});
+			});
 		});
 		btns.addEventListener('mouseleave', (btn)=>{
 			subMenu.classList.remove('subMenuOn');
-			subMenu.addEventListener('mouseleave', ()=>{
-				subMenu.classList.remove('subMenuOn');
-			});
+		});
+		subMenu.addEventListener('mouseenter', ()=>{
+			subMenu.classList.add('subMenuOn');
+		});
+		subMenu.addEventListener('mouseleave', ()=>{
+			subMenu.classList.remove('subMenuOn');
 		});
 	}
 });
 
-
+async function getTopMenuList(url){
+	return await fetch(url);
+}
 
 async function getProduct(){
 	await fetch(`/goods/goodsList`).then((response)=>{

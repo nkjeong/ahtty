@@ -27,8 +27,8 @@
 				<ul class="topMenu">
 					<li class="home" data-btn="home">Home</li>
 					<li class="mylist" data-btn="main">Mylist</li>
-					<li class="brand" data-btn="brand">Brand</li>
-					<li class="category" data-btn="category">Category</li>
+					<li class="brand" data-btn="brand" data-url="/manufactur/getManufacturingCompany">Brand</li>
+					<li class="category" data-btn="category" data-url="/category/getCategory">Category</li>
 				</ul>
 			</section>
 			<section class="listTitle">- Brand Product List -</section>

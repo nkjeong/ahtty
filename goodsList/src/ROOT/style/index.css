@@ -45,13 +45,12 @@ body::-webkit-scrollbar{
 	opacity:0;
 	position: absolute;
 	transition:all 0.5s;
-	top:-500px;
+	top:34px;
 	left: 50%;
 	transform: translateX(-50%);
 }
 .subMenuOn{
 	opacity:1;
-	height:300px;
 	width:1200px;
 	border:solid 1px #dcdcdc;
 	top:34px;
@@ -60,12 +59,33 @@ body::-webkit-scrollbar{
 	border-radius:0 0 10px 10px;
 	box-shadow :0 8px 24px rgba(140,149,159,0.2);
 	z-index: 50;
+	transition:all 0.5s;
 	transform: translateX(-50%);
 }
 .subMenuWrapper{
+	display:flex;
+	flex-direction:column;
 	width:100%;
+}
+.subMeneTitle{
+	display:flex;
+	align-items:center;
 	height:40px;
 	border-bottom:dotted 1px #dcdcdc;
+	font-weight:700;
+	font-size:0.9rem;
+	padding:0 0 0 10px;
+}
+.subMenuList{
+	display: flex;
+	padding-bottom: 10px;
+}
+.brandWrapper{
+	padding:5px;
+	background-color: #fffbdf;
+	margin: 10px 10px 0 10px;
+	font-size:0.75rem;
+	border-radius: 5px;
 }
 .topMenu{
 	display:flex;
