@@ -46,7 +46,7 @@ body::-webkit-scrollbar{
 	position: absolute;
 	transition:all 0.5s;
 	top:34px;
-	left: 50%;
+	left: -100%;
 	transform: translateX(-50%);
 }
 .subMenuOn{
@@ -78,6 +78,7 @@ body::-webkit-scrollbar{
 }
 .subMenuList{
 	display: flex;
+	justify-content:space-around;
 	padding-bottom: 10px;
 }
 .brandWrapper{
@@ -232,4 +233,44 @@ section.specialItemImg img{
 	font-size:0.9rem;
 	color:#e42221;
 	font-weight:700;
+}
+.footer{
+	height:350px;
+	width:100%;
+	border-top:solid 1px #eeeeee;
+}
+.footerBanner{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	background:no-repeat url("../images_source/banner_5.jpg");
+	background-size:cover;
+	height:500px;
+}
+.footerBanner article{
+	text-align:center;
+	font-size:8rem;
+	color:#ffffff;
+	font-weight: 700;
+	text-shadow: 10px 10px 30px #000000;
+}
+.footerBanner article span{
+	color:#e42221;
+}
+.smallBtn{
+	cursor:pointer;
+}
+.smallBtn:hover{
+	color:red;
+	box-shadow :3px 8px 15px rgba(140,149,159,0.2);
+}
+
+@media screen and (max-width:1800px) {
+	.footerBanner article{
+		text-align:center;
+		font-size:7rem;
+		color:#ffffff;
+		font-weight: 700;
+		text-shadow: 10px 10px 30px #000000;
+	}
 }

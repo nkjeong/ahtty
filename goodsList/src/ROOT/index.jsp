@@ -17,6 +17,7 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 		<link href="/style/index.css" rel="stylesheet">
 		<link href="/style/canvas.css" rel="stylesheet">
+		<link href="/style/center.css" rel="stylesheet">
 		<script defer src="/script/index.js"></script>
 		<script defer src="/script/canvas.js"></script>
 	</head>
@@ -45,12 +46,34 @@
 			<section class="mainListTitle">New choice! <span class="textLogo">[Wmullyu]</span></section>
 			<section class="listTitle">- Category Product List -</section>
 			<section class="categoryGoodsWrapper">
-				<section class="categoryGoodsList">
+				<section class="categoryGoodsList"></section>
+			</section>
+			<section class="centerWrapper">
+				<section class="centerBannerWrapper">
+					<section class="centerBanner"></section>
+					<section class="centerBanner"></section>
+					<section class="centerBanner"></section>
+					<section class="centerBanner"></section>
+				</section>
+				<section class="centerRightMenu">
+					<section class="centerRightMenuTop">
+						<section class="centerBanner_04"><img src="../images_source/banner_4.jpg"></section>
+					</section>
+					<section class="centerRightMenuBottom">
+						<section class="smallBtn">이름순</section>
+						<section class="smallBtn">가격높은순</section>
+						<section class="smallBtn">가격낮은순</section>
+						<section class="smallBtn">최근등록순</section>
+					</section>
 				</section>
 			</section>
 			<section class="listTitle">- Product List -</section>
 			<section class="goodsListAll"></section>
-		</section>	
+		</section>
+		<section class="footerBanner">
+			<article>Internet logistics agency! <span>[:Wmall]</span></article>
+		</section>
+		<section class="footer"></section>
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 	</body>

@@ -44,7 +44,7 @@ topMenuBtns.forEach((btns)=>{
 							`;
 						}else{
 							topMenuHTML += `
-								<section class="brandWrapper"><span>${d.nameKor}</span></section>
+								<section class="brandWrapper smallBtn"><span>${d.nameKor}</span></section>
 							`;
 						}
 					});
