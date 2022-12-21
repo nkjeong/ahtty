@@ -50,10 +50,10 @@
 			</section>
 			<section class="centerWrapper">
 				<section class="centerBannerWrapper">
-					<section class="centerBanner"></section>
-					<section class="centerBanner"></section>
-					<section class="centerBanner"></section>
-					<section class="centerBanner"></section>
+					<section class="centerBanner"><img src="../images_source/banner_6.jpg"></section>
+					<section class="centerBanner"><img src="../images_source/banner_7.jpg"></section>
+					<section class="centerBanner"><img src="../images_source/banner_8.jpg"></section>
+					<section class="centerBanner"><img src="../images_source/banner_9.jpg"></section>
 				</section>
 				<section class="centerRightMenu">
 					<section class="centerRightMenuTop">
@@ -64,6 +64,11 @@
 						<section class="smallBtn">가격높은순</section>
 						<section class="smallBtn">가격낮은순</section>
 						<section class="smallBtn">최근등록순</section>
+						<section class="mainSearchWrapper">
+							<form>
+								<input type="text" class="mainSearch" placeholder="상품검색">
+							</form>
+						</section>
 					</section>
 				</section>
 			</section>
@@ -71,7 +76,7 @@
 			<section class="goodsListAll"></section>
 		</section>
 		<section class="footerBanner">
-			<article>Internet logistics agency! <span>[:Wmall]</span></article>
+			<article>Internet logistics agency! <span>[:W-Mullyu]</span></article>
 		</section>
 		<section class="footer"></section>
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

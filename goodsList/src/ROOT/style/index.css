@@ -261,7 +261,48 @@ section.specialItemImg img{
 	cursor:pointer;
 }
 .smallBtn:hover{
-	color:red;
+	color:#e42221;
+	box-shadow :3px 8px 15px rgba(140,149,159,0.2);
+}
+.listBannerWrapper, .listBannerWrapper2{
+	display:flex;
+	justify-content:space-between;
+	height:80px;
+	width:100%;
+	margin-bottom:10px;
+}
+.listBannerWrapper2{
+	height:300px;
+	margin-bottom:20px;
+}
+section.listBannerWrapper .listBanner{
+	width:280px;
+	height:80px;
+}
+.listBannerWordWrapper{
+	display:flex;
+	justify-content:space-between;
+	width:100%;
+	margin-bottom:20px;
+}
+
+section.listBannerWordWrapper .listBannerWord{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	width:280px;
+	font-weight:700;
+	font-size: 1.1rem;
+	border-left: solid 1px #eeeeee;
+	border-right: solid 1px #eeeeee;
+	border-bottom: solid 1px #eeeeee;
+	border-radius: 10px;
+	box-shadow :3px 8px 15px rgba(140,149,159,0.2);
+	padding:5px 0;
+}
+
+.listBanner img, section.listBannerWrapper2 img{
+	border-radius: 10px;
 	box-shadow :3px 8px 15px rgba(140,149,159,0.2);
 }
 

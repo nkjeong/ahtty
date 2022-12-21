@@ -72,7 +72,7 @@ async function getProduct(){
 	await fetch(`/goods/goodsList`).then((response)=>{
 		response.json().then((data)=>{
 			let setHtml = '';
-			data.forEach((d)=>{
+			data.forEach((d, i)=>{
 				let imgPre = d.nameEng.toLowerCase();
 				let imgName = `${imgPre}_${d.code}`;
 				let itemName = d.item_name_reg;
@@ -93,7 +93,33 @@ async function getProduct(){
 						</section>
 					</section>
 				`;
-			})
+				if(i == 7){
+					setHtml += `
+						<section class="listBannerWrapper">
+							<section class="listBanner"><img src="../images_source/banner_10.jpg"></section>
+							<section class="listBanner"><img src="../images_source/banner_11.jpg"></section>
+							<section class="listBanner"><img src="../images_source/banner_12.jpg"></section>
+							<section class="listBanner"><img src="../images_source/banner_13.jpg"></section>
+						</section>
+						<section class="listBannerWordWrapper">
+							<section class="listBannerWord"><span>화방용품</span></section>
+							<section class="listBannerWord"><span>사무용품</span></section>
+							<section class="listBannerWord"><span>파티용품</span></section>
+							<section class="listBannerWord"><span>생활용품</span></section>
+						</section>
+					`;
+				}
+				if(i == 19){
+					setHtml += `
+						<section class="listBannerWrapper2"><img src="../images_source/banner_14.jpg"></section>
+					`;
+				}
+				if(i == 39){
+					setHtml += `
+						<section class="listBannerWrapper2"><img src="../images_source/banner_15.jpg"></section>
+					`;
+				}
+			});
 			goodsListAll.innerHTML = setHtml;
 		});
 	});
