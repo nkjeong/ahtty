@@ -41,26 +41,21 @@ body::-webkit-scrollbar{
 	z-index:30;
 }
 .subMenu{
-	display: flex;
-	opacity:0;
+	display: none;
+	width:1200px;
 	position: absolute;
 	transition:all 0.5s;
 	top:34px;
-	left: -100%;
-	transform: translateX(-50%);
-}
-.subMenuOn{
-	opacity:1;
-	width:1200px;
-	border:solid 1px #dcdcdc;
-	top:34px;
 	left: 50%;
 	background-color: #ffffff;
-	border-radius:0 0 10px 10px;
+	transform: translateX(-50%);
 	box-shadow :0 8px 24px rgba(140,149,159,0.2);
 	z-index: 50;
-	transition:all 0.5s;
-	transform: translateX(-50%);
+	border:solid 1px #dcdcdc;
+	border-radius:0 0 10px 10px;
+}
+.subMenuOn{
+	display: flex;
 }
 .subMenuWrapper{
 	display:flex;
@@ -81,12 +76,15 @@ body::-webkit-scrollbar{
 	justify-content:space-around;
 	padding-bottom: 10px;
 }
-.brandWrapper{
+.brandWrapper, .categoryWrapper{
 	padding:5px;
 	background-color: #fffbdf;
 	margin: 10px 10px 0 10px;
 	font-size:0.75rem;
 	border-radius: 5px;
+}
+.categoryWrapper{
+	background-color: #e3f0c8;
 }
 .topMenu{
 	display:flex;
@@ -97,6 +95,10 @@ body::-webkit-scrollbar{
 ul.topMenu li{
 	margin:0 10px;
 	cursor:pointer;
+}
+ul.topMenu li:last-child{
+	color:#e42221;
+	font-weight:700;
 }
 ul.topMenu li:hover{
 	color:orange;
@@ -291,14 +293,12 @@ section.listBannerWordWrapper .listBannerWord{
 	justify-content:center;
 	align-items:center;
 	width:280px;
-	font-weight:700;
-	font-size: 1.1rem;
-	border-left: solid 1px #eeeeee;
-	border-right: solid 1px #eeeeee;
-	border-bottom: solid 1px #eeeeee;
+	font-size: 0.9rem;
 	border-radius: 10px;
 	box-shadow :3px 8px 15px rgba(140,149,159,0.2);
 	padding:5px 0;
+	background: linear-gradient(#ffffff, #f2e7c6);
+	color:#f07921;
 }
 
 .listBanner img, section.listBannerWrapper2 img{

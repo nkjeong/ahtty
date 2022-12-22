@@ -7,10 +7,12 @@ const categoryGoodsList = document.querySelector('.categoryGoodsList');
 const subMenu = document.querySelector('.subMenu');
 topMenuBtns.forEach((btns)=>{
 	let btnMode = btns.dataset.btn
-	if(btnMode == 'home' || btnMode == 'main'){
+	if(btnMode == 'home' || btnMode == 'main' || btnMode == 'wmullyu'){
 		btns.addEventListener('click', (btn)=>{
 			if(btnMode == 'home'){
 				location.href = '/';
+			}else if(btnMode == 'wmullyu'){
+				window.open(btns.dataset.url);
 			}else{
 				location.href = btnMode;
 			}
@@ -40,7 +42,7 @@ topMenuBtns.forEach((btns)=>{
 					data.forEach((d)=>{
 						if(btnMode == 'category'){
 							topMenuHTML += `
-								<section>${d.name}</section>
+								<section class="categoryWrapper smallBtn">${d.name}</section>
 							`;
 						}else{
 							topMenuHTML += `

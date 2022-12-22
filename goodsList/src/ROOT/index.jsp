@@ -30,6 +30,7 @@
 					<li class="mylist" data-btn="main">Mylist</li>
 					<li class="brand" data-btn="brand" data-url="/manufactur/getManufacturingCompany">Brand</li>
 					<li class="category" data-btn="category" data-url="/category/getCategory">Category</li>
+					<li class="wmullyu" data-btn="wmullyu" data-url="https://www.mullyu.co.kr/">W-Mullyu</li>
 				</ul>
 			</section>
 			<section class="listTitle">- Brand Product List -</section>

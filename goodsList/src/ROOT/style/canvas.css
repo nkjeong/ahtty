@@ -26,8 +26,6 @@
 	padding:0;
 	overflow: hidden;
 	z-index: 5;
-	transition-duration:1.0s;
-	transition-timing-function:cubic-bezier(0, 0.55, 0.45, 1);
 }
 .cloneBox img{
 	position:absolute;
