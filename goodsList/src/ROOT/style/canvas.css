@@ -30,6 +30,6 @@
 .cloneBox img{
 	position:absolute;
 	z-index: 6;
-	opacity: 0;
+	opacity: 1;
 	transition:all 1.0s;
 }
