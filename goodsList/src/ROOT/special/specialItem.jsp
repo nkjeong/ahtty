@@ -14,6 +14,7 @@
 	<c:forEach var="getItem" items="${specialItem}">
 		"item_name_reg":"${getItem.item_name_reg}",
 		"code":"${getItem.code}",
+		"manufacturingCompany_code":"${getItem.manufacturingCompany_code}",
 		"item_retailPrice":"${getItem.item_retailPrice}",
 		"item_purchasePrice":"${getItem.item_purchasePrice}",
 		"nameEng":"${getItem.nameEng}"

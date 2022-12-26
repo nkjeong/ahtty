@@ -9,11 +9,11 @@ window.addEventListener('load',()=>{
 	banner_1.src = '../images_source/banner_1.jpg';
 	banner_2.src = '../images_source/banner_2.jpg';
 	banner_3.src = '../images_source/banner_3.jpg';
+/*
 	const imgBanner = [
 		banner_1.src,
 		banner_2.src,
 		banner_3.src
-		
 	];
 	let imageQuantity = imgBanner.length;
 	
@@ -29,18 +29,19 @@ window.addEventListener('load',()=>{
 	async function blind(time, imgMum){
 		let cloneHTML = '';
 		let get = await setNumber(time);
-		console.log(0, imgMum);
+		//console.log(0, imgMum);
 		cloneHTML += `
 			<section class="cloneBox" style="top:-350px; left:${0*50}px;"><img src="/images_source/banner_${imgMum}.jpg" style="top:0; left:-${0*50}px"></section>
 		`;
 		for(let i = 0 ; i < 23; i++){
 			get = await setNumber(get);
-			console.log(i+1, imgMum);
+			//console.log(i+1, imgMum);
 			cloneHTML += `
 				<section class="cloneBox" style="top:-350px; left:${(i+1)*50}px;"><img src="/images_source/banner_${imgMum}.jpg" style="top:0; left:-${(i+1)*50}px"></section>
 			`;
 		}
 		mainBanner.innerHTML = cloneHTML;
+		callEffect(20, mainBanner, imgMum);
 	}
 	
 	let collocateTime = 7000;
@@ -56,7 +57,26 @@ window.addEventListener('load',()=>{
 		}
 	}
 	setCollocate(collocateTime);
-/*
+	
+	
+	async function blindEffect(time){
+		return await new Promise((resolve, reject)=>{
+			setTimeout(()=>{
+				resolve(time);
+			}, time);
+		});
+	}
+	
+	async function callEffect(time, elements, imgMum){
+		const cloneBox = elements.children;
+		let get;
+		for(let i = 0 ; i < cloneBox.length ; i++){
+			get = await blindEffect(time);
+			console.log(get, i, imgMum);
+		}
+	}
+	*/
+
 	let init = 0;
 	let timeOut;
 	let imgCount = 2;
@@ -68,9 +88,9 @@ window.addEventListener('load',()=>{
 			`;
 		}
 		mainBanner.innerHTML = cloneHTML;
-		//timeOut = setInterval(()=>{
-			//effectImg(mainBanner, imgCount);
-		//}, 70);
+		timeOut = setInterval(()=>{
+			effectImg(mainBanner, imgCount);
+		}, 70);
 	}
 	setInterval(()=>{
 		cloneBox(`banner_${imgCount}`, imgCount);
@@ -92,5 +112,4 @@ window.addEventListener('load',()=>{
 			clearInterval(timeOut);
 		}
 	}
-	*/
 });

@@ -5,6 +5,8 @@ const navigator = document.querySelector('.navigator');
 const brandGoodsList = document.querySelector('.brandGoodsList');
 const categoryGoodsList = document.querySelector('.categoryGoodsList');
 const subMenu = document.querySelector('.subMenu');
+const detailViewContainer = document.querySelector('.detailViewContainer');
+const detailViewWrapper = document.querySelector('.detailViewWrapper');
 topMenuBtns.forEach((btns)=>{
 	let btnMode = btns.dataset.btn
 	if(btnMode == 'home' || btnMode == 'main' || btnMode == 'wmullyu'){
@@ -80,7 +82,7 @@ async function getProduct(){
 				let itemName = d.item_name_reg;
 				let discountRate = ((1-(parseInt(d.item_purchasePrice) / parseInt(d.item_retailPrice)))*100).toFixed(2);
 				setHtml += `
-					<section class="itemWrapper">
+					<section class="itemWrapper detailViewBtn" data-code="${d.code}" data-manufacturcode="${d.manufacturingCompany_code}">
 						<section class="itemImg">
 							<img src="http://twin19.synology.me:8080/images/1000/${imgName}.jpg">
 						</section>
@@ -123,6 +125,13 @@ async function getProduct(){
 				}
 			});
 			goodsListAll.innerHTML = setHtml;
+			const detailViewBtn = goodsListAll.querySelectorAll('.detailViewBtn');
+			detailViewBtn.forEach((btns)=>{
+				btns.addEventListener('click', (btn)=>{
+					btn.stopPropagation();
+					detailView(btn.currentTarget);
+				}, true);
+			});
 		});
 	});
 }
@@ -133,10 +142,12 @@ window.addEventListener('scroll', (e)=>{
 	if(scroll_y > 20){
 		navigator.classList.add('navigatorOn');
 		subMenu.style.width = '1200px'
-		
 	}else{
 		navigator.classList.remove('navigatorOn');
 	}
+	
+	detailViewContainer.style.top = `${scroll_y}px`;
+	detailViewWrapper.style.top = `${scroll_y}px`;
 });
 
 async function getSpecialItem(mode){
@@ -147,7 +158,7 @@ async function getSpecialItem(mode){
 				let imgPre = d.nameEng.toLowerCase();
 				let imgName = `${imgPre}_${d.code}`;
 				setHTML += `
-					<section class="specialItemWrapper">
+					<section class="specialItemWrapper detailViewBtn" data-code="${d.code}" data-manufacturcode="${d.manufacturingCompany_code}">
 						<section class="specialItemImg">
 							<img src="http://twin19.synology.me:8080/images/1000/${imgName}.jpg">
 						</section>
@@ -177,6 +188,10 @@ async function getSpecialItem(mode){
 					const getSImg = btn.target.children[0].children[0];
 					getSImg.style.top = '50px';
 				});
+				btns.addEventListener('click', (btn)=>{
+					btn.stopPropagation();
+					detailView(btn.currentTarget);
+				}, true);
 			});
 		});
 	});
@@ -184,3 +199,40 @@ async function getSpecialItem(mode){
 
 getSpecialItem('brand');
 setTimeout(()=>{getSpecialItem('category');}, 500);
+
+function detailView(element){
+	let manufacturcode = element.dataset.manufacturcode;
+	let code = element.dataset.code;
+	detailViewContainer.classList.add('detailViewContainerOn');
+	detailViewWrapper.classList.add('detailViewWrapperOn');
+	document.body.style.overflow = 'hidden';
+	getTopMenuList(`/goods/goodsList?mode=singleItemSelection&keyword=${code}:${manufacturcode}`).then((response)=>{
+		const representativeImageWrapper = detailViewWrapper.querySelector('.representativeImageWrapper');
+		const detailedDescription = detailViewWrapper.querySelector('.detailedDescription');
+		response.json().then((data)=>{
+			let d = data[0];
+			let imgPre = d.nameEng.toLowerCase();
+			let imgName = `${imgPre}_${d.code}`;
+			let item_name = d.item_name;
+			let item_retailPrice = d.item_retailPrice;
+			let item_purchasePrice = d.item_purchasePrice;
+			representativeImageWrapper.innerHTML = `<img src="http://twin19.synology.me:8080/images/1000/${imgName}.jpg" class="representativeImageMain">`;
+			detailedDescription.innerHTML = `
+				<section><article>${item_name}</article></section>
+				<section>
+					<article>소비자가</article>
+					<article>${Number(item_retailPrice).toLocaleString('ko-KR')}</article>
+				</section>
+				<section>
+					<article>공급가</article>
+					<article>${Number(item_purchasePrice).toLocaleString('ko-KR')}</article>
+				</section>
+			`;
+		});
+	});
+}
+detailViewContainer.addEventListener('click',(btn)=>{
+	detailViewContainer.classList.remove('detailViewContainerOn');
+	detailViewWrapper.classList.remove('detailViewWrapperOn');
+	document.body.style.overflow = 'scroll';
+});

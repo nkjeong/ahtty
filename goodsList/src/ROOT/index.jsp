@@ -22,7 +22,16 @@
 		<script defer src="/script/canvas.js"></script>
 	</head>
 	<body>
-	<section class="subMenu"></section>
+		<section class="detailViewContainer"></section>
+		<section class="detailViewWrapper">
+			<section class="detailTxt">
+				<section class="representativeImageWrapper"></section>
+				<section class="detailedDescription"></section>
+			</section>
+			<section class="detailImg"></section>
+		</section>
+		
+		<section class="subMenu"></section>
 		<section class="main">
 			<section class="navigator">
 				<ul class="topMenu">

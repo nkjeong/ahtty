@@ -57,6 +57,9 @@ public class GetGoodsList extends HttpServlet {
 			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` WHERE g.`manufacturingCompany_code` = '"+keyword.trim()+"'";
 		}else if(mode.equals("barcode")) {
 			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` WHERE g.`barcode` = '"+keyword.trim()+"'";
+		}else if(mode.equals("singleItemSelection")) {
+			String [] code = keyword.split(":");
+			sql = "SELECT g.*, m.`nameEng`, m.`nameKor` FROM `goods` AS g LEFT JOIN `manufacturingcompany` AS m ON g.`manufacturingCompany_code`=m.`code` WHERE g.code='"+code[0]+"' AND g.`manufacturingCompany_code` = '"+code[1]+"'";
 		}
 		Vector<GetGoodsListBean> list = new Vector<GetGoodsListBean>();
 		try {
