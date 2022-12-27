@@ -53,7 +53,7 @@ function getGoodsList(mode, keyword){
 							<article>${d.nameKor}</article>		<!--9-->
 							<article>${Number(d.item_retailPrice).toLocaleString('ko-KR')}</article>	<!--10-->
 							<article>${Number(d.item_purchasePrice).toLocaleString('ko-KR')}</article>		<!--11-->
-							<article>${Number(d.item_SalePrice_1).toLocaleString('ko-KR')}</article>		<!--12-->
+							<!--<article>${Number(d.item_SalePrice_1).toLocaleString('ko-KR')}</article>-->		<!--12-->
 							<article>${d.discontinued}</article>		<!--13-->
 							<article>${d.outOfStock}</article>		<!--14-->
 						</section>

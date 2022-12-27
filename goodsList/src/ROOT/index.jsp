@@ -35,11 +35,15 @@
 		<section class="main">
 			<section class="navigator">
 				<ul class="topMenu">
-					<li class="home" data-btn="home">Home</li>
-					<li class="mylist" data-btn="main">Mylist</li>
-					<li class="brand" data-btn="brand" data-url="/manufactur/getManufacturingCompany">Brand</li>
-					<li class="category" data-btn="category" data-url="/category/getCategory">Category</li>
-					<li class="wmullyu" data-btn="wmullyu" data-url="https://www.mullyu.co.kr/">W-Mullyu</li>
+					<li class="home" data-btn="home"><span>Home</span></li>
+					<li class="mylist" data-btn="main"><span>Mylist</span></li>
+					<li class="brand" data-btn="brand" data-url="/manufactur/getManufacturingCompany"><span>Brand</span></li>
+					<li class="category" data-btn="category" data-url="/category/getCategory"><span>Category</span></li>
+					<li class="wmullyu" data-btn="wmullyu" data-url="https://www.mullyu.co.kr/"><span>W-Mullyu</span></li>
+				</ul>
+				<ul class="memberInfoWrapper">
+					<li class="joinBtn"><span>join</span></li>
+					<li class="loginBtn" data-btn="wmullyu" data-url="/main?page=index"><span>login</span></li>
 				</ul>
 			</section>
 			<section class="listTitle">- Brand Product List -</section>

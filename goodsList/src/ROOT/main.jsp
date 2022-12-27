@@ -139,7 +139,7 @@
 									<article>제조사</article>		<!--9-->
 									<article>소비자가</article>	<!--10-->
 									<article>공급가</article>		<!--11-->
-									<article>판매가</article>		<!--12-->
+									<!-- <article>판매가</article>-->		<!--12-->
 									<article>품절</article>		<!--13-->
 									<article>단종</article>		<!--14-->
 								</section>

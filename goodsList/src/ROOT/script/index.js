@@ -7,6 +7,8 @@ const categoryGoodsList = document.querySelector('.categoryGoodsList');
 const subMenu = document.querySelector('.subMenu');
 const detailViewContainer = document.querySelector('.detailViewContainer');
 const detailViewWrapper = document.querySelector('.detailViewWrapper');
+const detailTxt = document.querySelector('.detailTxt');
+const detailImg = document.querySelector('.detailImg');
 topMenuBtns.forEach((btns)=>{
 	let btnMode = btns.dataset.btn
 	if(btnMode == 'home' || btnMode == 'main' || btnMode == 'wmullyu'){
@@ -201,12 +203,15 @@ getSpecialItem('brand');
 setTimeout(()=>{getSpecialItem('category');}, 500);
 
 function detailView(element){
-	let manufacturcode = element.dataset.manufacturcode;
+	let manufacturCode = element.dataset.manufacturcode;
 	let code = element.dataset.code;
 	detailViewContainer.classList.add('detailViewContainerOn');
+	let vwh = detailViewContainer.getBoundingClientRect();
 	detailViewWrapper.classList.add('detailViewWrapperOn');
+	detailViewWrapper.style.height = `${vwh.height}px`;
 	document.body.style.overflow = 'hidden';
-	getTopMenuList(`/goods/goodsList?mode=singleItemSelection&keyword=${code}:${manufacturcode}`).then((response)=>{
+	
+	getTopMenuList(`/goods/goodsList?mode=singleItemSelection&keyword=${code}:${manufacturCode}`).then((response)=>{
 		const representativeImageWrapper = detailViewWrapper.querySelector('.representativeImageWrapper');
 		const detailedDescription = detailViewWrapper.querySelector('.detailedDescription');
 		response.json().then((data)=>{
@@ -216,18 +221,75 @@ function detailView(element){
 			let item_name = d.item_name;
 			let item_retailPrice = d.item_retailPrice;
 			let item_purchasePrice = d.item_purchasePrice;
+			let item_number = d.item_number;
+			let item_standard = d.item_standard;
+			let option = d.option;
+			let nameKor = d.nameKor;
+			let item_origin = d.item_origin;
+			let barcode = d.barcode;
+			let keyword = d.keyword;
+			if(item_number == 'N'){
+				item_number = '없음';
+			}
+			if(item_standard == 'N'){
+				item_standard = '없음';
+			}
 			representativeImageWrapper.innerHTML = `<img src="http://twin19.synology.me:8080/images/1000/${imgName}.jpg" class="representativeImageMain">`;
 			detailedDescription.innerHTML = `
 				<section><article>${item_name}</article></section>
-				<section>
-					<article>소비자가</article>
-					<article>${Number(item_retailPrice).toLocaleString('ko-KR')}</article>
+				<section class="infoList">
+					<article>바코드</article>
+					<article style="width:200px;">${barcode}</article>
 				</section>
-				<section>
+				<section class="infoList">
+					<article>소비자가</article>
+					<article style="width:200px;">${Number(item_retailPrice).toLocaleString('ko-KR')}</article>
+				</section>
+				<section class="infoList">
 					<article>공급가</article>
-					<article>${Number(item_purchasePrice).toLocaleString('ko-KR')}</article>
+					<article style="width:200px;">${Number(item_purchasePrice).toLocaleString('ko-KR')}</article>
+				</section>
+				<section class="infoList">
+					<article>품번</article>
+					<article style="width:200px;">${item_number}</article>
+				</section>
+				<section class="infoList">
+					<article>규격</article>
+					<article style="width:200px;">${item_standard}</article>
+				</section>
+				<section class="infoList optionCont">
+					<article>옵션</article>
+					<article style="width:200px;"></article>
+				</section>
+				<section class="infoList">
+					<article>키워드</article>
+					<article style="width:200px;">${keyword}</article>
+				</section>
+				<section class="infoList">
+					<article>브랜드</article>
+					<article style="width:200px;">${nameKor}</article>
+				</section>
+				<section class="infoList">
+					<article>원산지</article>
+					<article style="width:200px;">${item_origin}</article>
 				</section>
 			`;
+			getOption(code, manufacturCode).then((response)=>{
+				const optionCont = detailedDescription.querySelector('section.optionCont article:last-child');
+				if(option == 'Y'){
+					response.json().then((data)=>{
+						optionCont.innerHTML = `
+							<div><span>옵션명</span> : <span>${data.optionName}</span></div>
+							<div style="white-space: normal;"><span>옵션값</span> : <span style="color:#e42221;">${data.optionValue}</span></div>
+						`;
+					});
+				}else{
+					optionCont.innerHTML = '<span>없음</span>';
+				}
+			});
+			let dth = detailTxt.getBoundingClientRect();
+			detailImg.style.height = `${vwh.height-dth.height}px`;
+			detailImg.innerHTML = `<article style="width:500px;"><img src="http://twin19.synology.me:8080/images/detail/${imgName}.jpg" class="width:100%;"></article>`;
 		});
 	});
 }
@@ -236,3 +298,6 @@ detailViewContainer.addEventListener('click',(btn)=>{
 	detailViewWrapper.classList.remove('detailViewWrapperOn');
 	document.body.style.overflow = 'scroll';
 });
+async function getOption(imgCode, manufacturCode){
+	return await fetch(`/goods/getOption?imgCode=${imgCode}&manufacturCode=${manufacturCode}`);
+}
