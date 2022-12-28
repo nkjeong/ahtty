@@ -297,9 +297,12 @@ function detailView(element){
 				detailMenu.innerHTML = '';
 				imgs.addEventListener('load',(img)=>{
 					let title = '';
+					let getBytes = '';
 					if(img.target.src.indexOf('detail') != -1){
+						getBytes = getFileInfo(`detail/${imgName}.jpg`);
 						title = '상세이미지';
 					}else{
+						getBytes = getFileInfo(`1000/${imgName}.jpg`);
 						title = '대표이미지';
 					}
 					detailMenu.innerHTML += `
@@ -317,4 +320,8 @@ detailViewContainer.addEventListener('click',(btn)=>{
 });
 async function getOption(imgCode, manufacturCode){
 	return await fetch(`/goods/getOption?imgCode=${imgCode}&manufacturCode=${manufacturCode}`);
+}
+
+async function getFileInfo(path){
+	return await fetch(`/file/getFileInfo?path=${path}`);
 }
