@@ -297,10 +297,10 @@ function detailView(element){
 				detailMenu.innerHTML = '';
 				imgs.addEventListener('load',(img)=>{
 					let title = '';
-					if(img.target.src.indexOf('1000') != -1){
-						title = '대표이미지';
-					}else{
+					if(img.target.src.indexOf('detail') != -1){
 						title = '상세이미지';
+					}else{
+						title = '대표이미지';
 					}
 					detailMenu.innerHTML += `
 						<section title="download">${title} : ${img.target.naturalWidth}*${img.target.naturalHeight}(px)</section>
