@@ -28,6 +28,7 @@
 				<section class="representativeImageWrapper"></section>
 				<section class="detailedDescription"></section>
 			</section>
+			<section class="detailMenu"></section>
 			<section class="detailImg"></section>
 		</section>
 		

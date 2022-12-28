@@ -97,7 +97,7 @@ ul.topMenu li, ul.memberInfoWrapper li{
 	cursor:pointer;
 	font-size:0.8rem;
 }
-ul.topMenu li span, ul.memberInfoWrapper li span{
+ul.topMenu li span, ul.memberInfoWrapper li span, section.detailMenu section{
 	background-color:#1a73e8;
 	color:#ffffff;
 	padding:5px 10px;
@@ -111,7 +111,7 @@ ul.topMenu li:last-child span{
 	color:#000000;
 	font-weight:700;
 }
-ul.topMenu li span:hover, ul.memberInfoWrapper li span:hover{
+ul.topMenu li span:hover, ul.memberInfoWrapper li span:hover, section.detailMenu section:hover{
 	color:orange;
 	text-decoration: underline;
 	box-shadow :3px 3px 10px #dcdcdc;
@@ -361,6 +361,19 @@ section.listBannerWordWrapper .listBannerWord{
 	height:400px;
 	border-bottom:solid 1px #dcdcdc;
 }
+.detailMenu{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:60px;
+	border-bottom:solid 1px #dcdcdc;
+	font-size:0.8rem;
+}
+section.detailMenu section{
+	margin: 0 10px;
+	cursor: pointer;
+}
+
 .detailImg{
 	display:flex;
 	justify-content: center;

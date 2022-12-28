@@ -9,6 +9,7 @@ const detailViewContainer = document.querySelector('.detailViewContainer');
 const detailViewWrapper = document.querySelector('.detailViewWrapper');
 const detailTxt = document.querySelector('.detailTxt');
 const detailImg = document.querySelector('.detailImg');
+const detailMenu = document.querySelector('.detailMenu');
 topMenuBtns.forEach((btns)=>{
 	let btnMode = btns.dataset.btn
 	if(btnMode == 'home' || btnMode == 'main' || btnMode == 'wmullyu'){
@@ -288,8 +289,24 @@ function detailView(element){
 				}
 			});
 			let dth = detailTxt.getBoundingClientRect();
-			detailImg.style.height = `${vwh.height-dth.height}px`;
-			detailImg.innerHTML = `<article style="width:500px;"><img src="http://twin19.synology.me:8080/images/detail/${imgName}.jpg" class="width:100%;"></article>`;
+			let dmh = detailMenu.getBoundingClientRect();
+			detailImg.style.height = `${vwh.height-dmh.height-dth.height}px`;
+			detailImg.innerHTML = `<article style="width:100%;"><img src="http://twin19.synology.me:8080/images/detail/${imgName}.jpg" style="width:100%;"></article>`;
+			const imgsInfo = detailViewWrapper.querySelectorAll('img');
+			imgsInfo.forEach((imgs, i)=>{
+				detailMenu.innerHTML = '';
+				imgs.addEventListener('load',(img)=>{
+					let title = '';
+					if(img.target.src.indexOf('1000') != -1){
+						title = '대표이미지';
+					}else{
+						title = '상세이미지';
+					}
+					detailMenu.innerHTML += `
+						<section title="download">${title} : ${img.target.naturalWidth}*${img.target.naturalHeight}(px)</section>
+					`;
+				});
+			});
 		});
 	});
 }
