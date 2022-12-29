@@ -28,7 +28,11 @@
 				<section class="representativeImageWrapper"></section>
 				<section class="detailedDescription"></section>
 			</section>
-			<section class="detailMenu"></section>
+			<section class="detailMenu">
+				<section class="representativeInfo" title="download"></section>
+				<section class="detailInfo" title="download"></section>
+				<section class="wmullyuViewM">세상물류에서보기</section>
+			</section>
 			<section class="detailImg"></section>
 		</section>
 		

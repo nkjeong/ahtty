@@ -370,8 +370,12 @@ section.listBannerWordWrapper .listBannerWord{
 	font-size:0.8rem;
 }
 section.detailMenu section{
-	margin: 0 10px;
+	margin: 0 2px;
 	cursor: pointer;
+}
+section.detailMenu section a{
+	color:#ffffff;
+	text-decoration: none;
 }
 
 .detailImg{

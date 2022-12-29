@@ -21,15 +21,13 @@ public class GetFileInfo extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String realPath = request.getSession().getServletContext().getRealPath("/");
-		String rootPath = realPath+"images/";
 		String getPath = request.getParameter("path");
 		long bytes = 0;
 		boolean exist = true;
 		try{
-			Path path = Paths.get(rootPath+getPath);
+			Path path = Paths.get(realPath+getPath);
 			if(Files.exists(path)) {
 				bytes = Files.size(path);
-				System.out.print(bytes);
 			}else {
 				exist = false;
 			}

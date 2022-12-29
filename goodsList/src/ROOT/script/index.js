@@ -235,7 +235,7 @@ function detailView(element){
 			if(item_standard == 'N'){
 				item_standard = '없음';
 			}
-			representativeImageWrapper.innerHTML = `<img src="http://twin19.synology.me:8080/images/1000/${imgName}.jpg" class="representativeImageMain">`;
+			representativeImageWrapper.innerHTML = `<img src="http://twin19.synology.me:8080/images/1000/${imgName}.jpg" class="representativeImageMain rImg">`;
 			detailedDescription.innerHTML = `
 				<section><article>${item_name}</article></section>
 				<section class="infoList">
@@ -291,33 +291,48 @@ function detailView(element){
 			let dth = detailTxt.getBoundingClientRect();
 			let dmh = detailMenu.getBoundingClientRect();
 			detailImg.style.height = `${vwh.height-dmh.height-dth.height}px`;
-			detailImg.innerHTML = `<article style="width:100%;"><img src="http://twin19.synology.me:8080/images/detail/${imgName}.jpg" style="width:100%;"></article>`;
-			const imgsInfo = detailViewWrapper.querySelectorAll('img');
-			imgsInfo.forEach((imgs, i)=>{
-				detailMenu.innerHTML = '';
-				imgs.addEventListener('load',(img)=>{
-					let title = '';
-					let getBytes = '';
-					if(img.target.src.indexOf('detail') != -1){
-						getBytes = getFileInfo(`detail/${imgName}.jpg`);
-						title = '상세이미지';
-					}else{
-						getBytes = getFileInfo(`1000/${imgName}.jpg`);
-						title = '대표이미지';
-					}
-					detailMenu.innerHTML += `
-						<section title="download">${title} : ${img.target.naturalWidth}*${img.target.naturalHeight}(px)</section>
-					`;
-				});
-			});
+			detailImg.innerHTML = `<article style="width:100%;"><img src="http://twin19.synology.me:8080/images/detail/${imgName}.jpg" style="width:100%;" class="dImg"></article>`;
+			const rImg = detailViewWrapper.querySelector('.rImg');
+			setImgInfo('r', rImg, detailMenu);
+			const dImg = detailViewWrapper.querySelector('.dImg');
+			setImgInfo('d', dImg, detailMenu);
 		});
 	});
 }
 detailViewContainer.addEventListener('click',(btn)=>{
 	detailViewContainer.classList.remove('detailViewContainerOn');
 	detailViewWrapper.classList.remove('detailViewWrapperOn');
+	detailMenu.innerHTML = `
+		<section class="representativeInfo" title="download"></section>
+		<section class="detailInfo" title="download"></section>
+		<section class="wmullyuViewM">세상물류에서보기</section>
+	`;
 	document.body.style.overflow = 'scroll';
 });
+
+async function setImgInfo(label, img, ele){
+	await img.addEventListener('load',(m)=>{
+		let imgUrl = new URL(m.target.src);
+		let path = imgUrl.pathname.substring(1, imgUrl.toString().length);
+		getFileInfo(path).then((response)=>{
+			response.json().then((inf)=>{
+				let getSize = (parseInt(inf.bytes)/1024/1024).toFixed(2);
+				let imgW = Number(img.naturalWidth).toLocaleString('ko-KR');
+				let imgH = Number(img.naturalHeight).toLocaleString('ko-KR');
+				if(label == 'r'){
+					ele.querySelector('.representativeInfo').innerHTML = `
+						<a href="${imgUrl}" target="_blank" download>대표이미지 : ${imgW}*${imgH}px [${getSize}Mb]</a>
+					`;
+				}else{
+					ele.querySelector('.detailInfo').innerHTML = `
+						<a href="${imgUrl}" target="_blank" download>상세이미지 : ${imgW}*${imgH}px [${getSize}Mb]</a>
+					`;
+				}
+			});
+		})
+	});
+}
+
 async function getOption(imgCode, manufacturCode){
 	return await fetch(`/goods/getOption?imgCode=${imgCode}&manufacturCode=${manufacturCode}`);
 }
