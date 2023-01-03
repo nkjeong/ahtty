@@ -14,7 +14,7 @@ window.addEventListener('load', ()=>{
 });
 
 
-async function login(getForm){
+async function login(getForm, page){
 	const getFData = new FormData(getForm);
 	const loginData = {};
     getFData.forEach((value, key)=>{
@@ -36,7 +36,11 @@ async function login(getForm){
 			}else if(condi == 'NO-MEMBER'){
 				loginMassage.innerHTML = `<span style="color:red;">등록된 아이디가 아닙니다.</span>`;
 			}else{
-				location.href='/main';
+				if(page == 'index'){
+					location.href='/';
+				}else{
+					location.href='/main';
+				}
 			}
 		});
 	});

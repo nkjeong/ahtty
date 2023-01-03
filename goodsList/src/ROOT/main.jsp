@@ -177,7 +177,7 @@
 						Member Login
 					</section>
 					<section class="loginWrapper">
-						<form name="loginForm" class="loginForm" onsubmit="return login(this);">
+						<form name="loginForm" class="loginForm" onsubmit="return login(this, '${page}');">
 							<section class="loginFormWrapper">
 								<article class="userIdWrapper">
 									<div class="form-floating mb-3">

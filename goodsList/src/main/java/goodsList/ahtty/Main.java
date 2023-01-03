@@ -20,11 +20,14 @@ public class Main extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String page = request.getParameter("page");
+		
 		GetCalendar cal = new GetCalendar();
 		String getCal = cal.calendar();
 		
 		ServletContext application =  request.getServletContext();
 		application.setAttribute("calendar", getCal);
+		application.setAttribute("page", page);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/main.jsp");
 		dispatcher.forward(request, response);

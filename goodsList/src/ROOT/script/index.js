@@ -10,6 +10,8 @@ const detailViewWrapper = document.querySelector('.detailViewWrapper');
 const detailTxt = document.querySelector('.detailTxt');
 const detailImg = document.querySelector('.detailImg');
 const detailMenu = document.querySelector('.detailMenu');
+const loginBtn = document.querySelector('.loginBtn');
+const logoutBtn = document.querySelector('.logoutBtn');
 topMenuBtns.forEach((btns)=>{
 	let btnMode = btns.dataset.btn
 	if(btnMode == 'home' || btnMode == 'main' || btnMode == 'wmullyu'){
@@ -339,4 +341,15 @@ async function getOption(imgCode, manufacturCode){
 
 async function getFileInfo(path){
 	return await fetch(`/file/getFileInfo?path=${path}`);
+}
+if(loginBtn != null){
+	loginBtn.addEventListener('click', (btn)=>{
+		btn.stopPropagation();
+		location.href=btn.currentTarget.dataset.url;
+	}, true);
+}
+if(logoutBtn != null){
+	logoutBtn.addEventListener('click', ()=>{
+		location.href = '/member/logout';
+	});
 }

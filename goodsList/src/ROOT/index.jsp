@@ -7,6 +7,7 @@
     }
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 	<head>
@@ -48,7 +49,14 @@
 				</ul>
 				<ul class="memberInfoWrapper">
 					<li class="joinBtn"><span>join</span></li>
-					<li class="loginBtn" data-btn="wmullyu" data-url="/main?page=index"><span>login</span></li>
+					<c:choose>
+						<c:when test="${userId != null}">
+							<li class="logoutBtn" data-btn="logout"><span>logout</span></li>
+						</c:when>
+						<c:otherwise>
+							<li class="loginBtn" data-btn="login" data-url="/main?page=index"><span>login</span></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</section>
 			<section class="listTitle">- Brand Product List -</section>
