@@ -66,6 +66,9 @@ public class SpecialItem extends HttpServlet {
 				itemCode = Integer.toString(randomNum-1);
 			}
 			Vector<GetGoodsListBean> specialItem = gsi.getSpecialItem(getSpecialCodeCode[i], itemCode, mode.trim());
+			if(specialItem.isEmpty()) {
+				specialItem = gsi.getSpecialItem(getSpecialCodeCode[i], "0001", mode.trim());
+			}
 			item.add(specialItem);
 		}
 		ServletContext application =  request.getServletContext();
