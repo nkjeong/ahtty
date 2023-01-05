@@ -26,6 +26,7 @@ public class GetGoodsListBean {
 	private int hit = 0;
 	private String nameEng = null;
 	private String nameKor = null;
+	private String optionValue = null;
 	public String getCode() {
 		return code;
 	}
@@ -175,5 +176,11 @@ public class GetGoodsListBean {
 	}
 	public void setNameKor(String nameKor) {
 		this.nameKor = nameKor;
+	}
+	public String getOptionValue() {
+		return optionValue;
+	}
+	public void setOptionValue(String optionValue) {
+		this.optionValue = optionValue;
 	}
 }

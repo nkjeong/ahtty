@@ -281,7 +281,7 @@ body, html{
 	flex:1;
 }
 .itemAccount article:nth-of-type(5), .articleContent article:nth-of-type(5) {
-	width:160px;
+	width:200px;
 }
 .itemAccount article:nth-of-type(6), .articleContent article:nth-of-type(6) {
 	width:100px;

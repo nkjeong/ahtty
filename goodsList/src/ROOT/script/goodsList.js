@@ -10,6 +10,7 @@ const right = document.querySelector('.right');
 const left = document.querySelector('.left');
 const itemCount = document.querySelector('.itemCount');
 const itemNotice = document.querySelector('.itemNotice');
+const ckAll = document.querySelector('.ckAll');
 
 function getGoodsList(mode, keyword){
 	let searURL = '';
@@ -75,6 +76,14 @@ function getGoodsList(mode, keyword){
 					btn.stopPropagation();
 					selectLine(btn.currentTarget, articleContent, idx);
 				}, true);
+			});
+			ckAll.addEventListener('click', (ck) =>{
+				const selectAll = articleContentWrapper.querySelectorAll('input[type=checkbox]');
+				let cked = true;
+				if(!ck.target.checked) cked = false;
+				selectAll.forEach((eles)=>{
+					eles.checked = cked;
+				});
 			});
 		});
 	});

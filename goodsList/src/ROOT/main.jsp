@@ -72,7 +72,7 @@
 						<section class="homeListBtn">LIST 처음으로</section>
 						<section class="allDownBtn">전체상품 다운받기(엑셀)</section>
 						<section class="selectedDownBtn">선택상품 다운받기(엑셀)</section>
-						<section class="searchDownBtn">검색상품 다운받기(엑셀)</section>
+						<!-- <section class="searchDownBtn">검색상품 다운받기(엑셀)</section> -->
 					</section>
 					<section class="mainText">
 						<section class="left">
