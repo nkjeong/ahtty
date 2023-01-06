@@ -27,20 +27,23 @@ public class GoodsDownload {
 			rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				GetGoodsListBean gglb = new GetGoodsListBean();
-				gglb.setCode(rs.getString("code"));
+				
+				String itemCode = rs.getString("code");
+				
+				gglb.setCode(itemCode);
 				gglb.setBarcode(rs.getString("barcode"));
 				gglb.setItem_name(rs.getString("item_name"));
 				gglb.setItem_name_reg(rs.getString("item_name_reg"));
 				gglb.setItem_number(rs.getString("item_number"));
 				gglb.setItem_standard(rs.getString("item_standard"));
 				gglb.setItem_origin(rs.getString("item_origin"));
-				gglb.setManufacturingCompany_code(rs.getString("manufacturingCompany_code"));
+				
+				String manufacturCode = rs.getString("manufacturingCompany_code");
+				
+				gglb.setManufacturingCompany_code(manufacturCode);
 				gglb.setItem_unit(rs.getString("item_unit"));
 				gglb.setItem_retailPrice(rs.getInt("item_retailPrice"));
 				gglb.setItem_purchasePrice(rs.getInt("item_purchasePrice"));
-				gglb.setItem_SalePrice_1(rs.getInt("item_SalePrice_1"));
-				gglb.setItem_SalePrice_2(rs.getInt("item_SalePrice_2"));
-				gglb.setItem_SalePrice_3(rs.getInt("item_SalePrice_3"));
 				gglb.setNotice(rs.getString("notice"));
 				gglb.setKeyword(rs.getString("keyword"));
 				gglb.setCategory(rs.getString("category"));
@@ -48,10 +51,23 @@ public class GoodsDownload {
 				gglb.setModifyDate(rs.getString("modifyDate"));
 				gglb.setDiscontinued(rs.getString("discontinued"));
 				gglb.setOutOfStock(rs.getString("outOfStock"));
-				gglb.setOption(rs.getString("option"));
+				
+				String isOpt = rs.getString("option");
+				String optValue = "N";
+				String optName = "N";
+				if(isOpt.equals("Y")) {
+					OptionDownload od = new OptionDownload();
+					String [] getOpt = od.getOption(itemCode, manufacturCode);
+					optValue = getOpt[1];
+					optName = getOpt[0];
+				}
+				
+				gglb.setOption(isOpt);
 				gglb.setHit(rs.getInt("hit"));
 				gglb.setNameEng(rs.getString("nameEng"));
 				gglb.setNameKor(rs.getString("nameKor"));
+				gglb.setOptionValue(optValue);
+				gglb.setOptionName(optName);
 				downloadList.add(gglb);
 			}
 		}catch(SQLException e) {
