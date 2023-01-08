@@ -77,19 +77,43 @@ function getGoodsList(mode, keyword){
 					selectLine(btn.currentTarget, articleContent, idx);
 				}, true);
 			});
-			ckAll.addEventListener('click', (ck) =>{
-				const selectAll = articleContentWrapper.querySelectorAll('input[type=checkbox]');
-				let cked = true;
-				if(!ck.target.checked) cked = false;
-				selectAll.forEach((eles)=>{
-					eles.checked = cked;
-				});
-			});
+			
+			ckAll.removeEventListener('click', checkAll);
+			ckAll.addEventListener('click', checkAll);
+			
+			selectedDownBtn.removeEventListener('click', ckExcel);
+			selectedDownBtn.addEventListener('click', ckExcel);
 		});
 	});
 }
 
 getGoodsList('all', 'all');
+
+const ckExcel = function(e) {
+	let ckCnt = 0
+	const ckEle = e.target.closest('.main').querySelectorAll('section.articleContent article div input[type=checkbox]');
+	let ckData = '';
+	ckEle.forEach((eles)=>{
+		if(eles.checked){
+			ckCnt++;
+			ckData += eles.closest('.articleContent').dataset.manufacturingcompanycode+""+eles.closest('.articleContent').dataset.goodscode+'|';
+		}
+	});
+	if(ckCnt == 0){
+		alert('선택된 상품이 없습니다. 상품을 선택하세요.');
+	}else{
+		let fetchData = ckData.substring(0, ckData.length-1);
+	}
+}
+
+const checkAll = function(e) {
+	let cked = true;
+	if(!e.target.checked) cked = false;
+	const ckEle = e.target.closest('.main').querySelectorAll('section.articleContent article div input[type=checkbox]');
+	ckEle.forEach((eles)=>{
+		eles.checked = cked;
+	});
+}
 
 function selectLine(line, wrapper, idx){
 	wrapper.forEach((l, i)=>{
