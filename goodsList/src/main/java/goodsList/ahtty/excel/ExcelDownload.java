@@ -26,8 +26,11 @@ public class ExcelDownload extends HttpServlet {
 		GoodsDownload gd = new GoodsDownload();
 		if(mode.equals("all")) {
 			download = gd.excelDownloadAll();
-		}else {
-			
+		}else if(mode.equals("ck")) {
+			String [] goods = getData.split(";");
+			for(int i = 0 ; i < goods.length ; i++) {
+				download.add(gd.excelDownloadCk(goods[i].trim().substring(4,8), goods[i].trim().substring(0,4)));
+			}
 		}
 		ServletContext application =  request.getServletContext();
 		application.setAttribute("download", download);

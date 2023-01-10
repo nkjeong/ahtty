@@ -96,13 +96,32 @@ const ckExcel = function(e) {
 	ckEle.forEach((eles)=>{
 		if(eles.checked){
 			ckCnt++;
-			ckData += eles.closest('.articleContent').dataset.manufacturingcompanycode+""+eles.closest('.articleContent').dataset.goodscode+'|';
+			ckData += eles.closest('.articleContent').dataset.manufacturingcompanycode+""+eles.closest('.articleContent').dataset.goodscode+';';
 		}
 	});
 	if(ckCnt == 0){
 		alert('선택된 상품이 없습니다. 상품을 선택하세요.');
 	}else{
 		let fetchData = ckData.substring(0, ckData.length-1);
+		let excelForm = document.createElement('form');
+		excelForm.setAttribute('method', 'Post')
+		excelForm.setAttribute('action', '/download/excel');
+		
+		let excelInput_data = document.createElement('input');
+		excelInput_data.setAttribute('type', 'hidden');
+        excelInput_data.setAttribute('name', 'getData');
+        let excelInput_mode = document.createElement('input');
+		excelInput_mode.setAttribute('type', 'hidden');
+        excelInput_mode.setAttribute('name', 'mode');
+        
+        excelInput_data.value = fetchData;
+        excelInput_mode.value = 'ck';
+        
+        
+        excelForm.appendChild(excelInput_data);
+        excelForm.appendChild(excelInput_mode);
+		document.body.appendChild(excelForm);
+		excelForm.submit();
 	}
 }
 
